@@ -214,16 +214,19 @@ ul {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: none;
-    border-radius: 50px;
+    border-radius: 60px;
     cursor: pointer;
     transition: all var(--transition-normal);
+    border: #000;
+
 }
 
 .button-primary {
     background: linear-gradient(135deg, var(--accent-emerald) 0%, #20a89a 100%);
     color: var(--white);
     box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
+    box-sizing: border-box ;
+    border-color: #000;    border-width: 10px;
 }
 
 .button-primary:hover {
@@ -235,6 +238,7 @@ ul {
     background: transparent;
     color: var(--white);
     border: 2px solid var(--white);
+    border-color: #000;
 }
 
 .button-outline:hover {
@@ -445,7 +449,7 @@ hr {
     position: relative;
     z-index: 1;
   grid-template-columns: 1fr;
-  gap: 30px; 
+  gap: 10px; 
   border: 2px solid #000;
   padding: 4px;
 
@@ -490,14 +494,28 @@ hr {
 }
 
 .jersey-image {
+     width: 100%;
+    aspect-ratio: 5/ 5; /* Perfect jersey ratio */
+    overflow: hidden;
+    border-radius: 16px;
+    background:#415a77;
     text-align: center;
+     display: flex;
+    align-items: center;      /* vertical center */
+    justify-content: center; 
     position: relative;
     background-size: 200% auto;
     animation: shimmer 1s linear infinite;
-    background-color: white;
     border-color: black;
 }
-
+.jersey-image img{
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+/* Crops nicely, no stretching */
+    display: flex;
+    justify-content: center;
+}
 
 
 .jersey-team-badge {
@@ -515,6 +533,7 @@ hr {
 }
 
 .card-content {
+    text-align: center;
     padding: 25px;
 }
 
@@ -543,15 +562,11 @@ hr {
     margin-bottom: 15px;
 }
 
-.price-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
 
 
 .price {
+    border-radius: #000;
+    text-align: center;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 26px;
     font-weight: 800;
@@ -991,7 +1006,7 @@ hr {
 /* Default = Desktop */
 .jersey-grid {
     display: grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns:repeat(3,1fr);
      /*repeat(3, minmax(0,1fr)); */
     gap: 50px;
     max-width: 1500px;
