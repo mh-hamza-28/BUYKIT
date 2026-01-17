@@ -977,7 +977,44 @@ hr {
 
 
 /* ---------- BACK TO TOP BUTTON ---------- */
-.back-to-top {
+
+.cart{
+    position: fixed;
+    bottom: 100px; /* ABOVE back-to-top */
+    right: 30px;
+    width: 100px;
+    height: 120px;
+  background:#20a89a;
+    border-radius: 20%;
+    display: flex; 
+     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    z-index: 999;
+   
+}
+.cart img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+     display: block;
+}
+
+.cart-text{ 
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.8px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.cart:hover{
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+.back-to-top{
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -987,7 +1024,7 @@ hr {
     color: var(--white);
     border-radius: 50%;
     display: flex;
-    align-items: center;
+     align-items: center;
     justify-content: center;
     font-size: 24px;
     box-shadow: var(--shadow-lg);
@@ -999,8 +1036,6 @@ hr {
     transform: translateY(-5px);
     box-shadow: var(--shadow-glow);
 }
-
-
 /* ---------- RESPONSIVE DESIGN ---------- */
 
 /* Default = Desktop */
