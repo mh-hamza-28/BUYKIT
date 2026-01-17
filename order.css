@@ -1,0 +1,239 @@
+/* ---------- Main Container ---------- */
+.main {
+  max-width: 850px;
+  margin-top: 90px;
+  margin-bottom: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Page Title ---------- */
+.page-title {
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: var(--primary-dark);
+}
+
+/* ---------- Orders Grid ---------- */
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* ---------- Order Container ---------- */
+.order-container {
+  border: 2px solid black;           /* black border for all orders */
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Order Header ---------- */
+.order-header {
+  background-color: rgb(240, 242, 242);
+  border: 1px solid rgb(213, 217, 217);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.order-header-left-section {
+  display: flex;
+  flex-direction:column;
+  flex-shrink: 0;
+}
+
+.order-header-label {
+  font-weight: 500;
+}
+
+.order-date,
+.order-total {
+  margin-right: 45px;
+}
+
+.order-header-right-section {
+    display: flex;
+    flex-direction: column;
+  flex-shrink: 1;
+}
+
+/* ---------- Order Details Grid ---------- */
+.order-details-grid {
+  padding: 40px 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* ---------- Product Card ---------- */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--shadow-sm);
+  padding: 15px;
+  height: 100%;                     /* equal card height */
+  box-sizing: border-box;
+  border: 2px solid black;
+}
+
+/* ---------- Product Image Container ---------- */
+.product-image-container {
+  width: 100%;
+  height: 250px;                     /* fixed container height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;         /* optional background */
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.product-image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;               /* prevents cropping */
+}
+
+/* ---------- Product Details ---------- */
+.product-name {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.product-delivery-date {
+  margin-bottom: 3px;
+  font-size: 14px;
+  color: var(--dark-gray);
+}
+
+.product-quantity {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--dark-gray);
+}
+
+/* ---------- Buttons ---------- */
+.buy-again-button {
+  font-size: 15px;
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: var(--accent-emerald);
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-again-button:hover {
+  background-color: #28a745;
+}
+
+.track-package-button {
+  width: 100%;
+  border: 1px solid black;
+  background-color: #fff;
+  color: black;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.track-package-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* ---------- Responsive Styles ---------- */
+@media (max-width: 800px) {
+  .order-details-grid {
+    grid-template-columns: 1fr; /* stack cards */
+    gap: 20px;
+    padding-bottom: 8px;
+  }
+
+  .buy-again-button {
+    margin-bottom: 10px;
+  }
+
+  .product-actions {
+    grid-column: 1;
+    margin-bottom: 30px;
+  }
+
+  .track-package-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .order-header {
+    flex-direction: column;
+    align-items: start;
+    line-height: 23px;
+    padding: 15px;
+  }
+
+  .order-header-left-section {
+    flex-direction: column;
+  }
+
+  .order-header-label {
+    margin-right: 5px;
+  }
+
+  .order-date,
+  .order-total {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .order-header-right-section {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+  }
+}
+
+@media (max-width: 450px) {
+  .order-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image-container {
+    height: 200px; /* smaller container for small screens */
+    margin-bottom: 25px;
+  }
+
+  .product-name {
+    margin-bottom: 10px;
+  }
+
+  .product-quantity {
+    margin-bottom: 15px;
+  }
+
+  .buy-again-button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .track-package-button {
+    width: 100%;
+    padding: 12px;
+  }
+}

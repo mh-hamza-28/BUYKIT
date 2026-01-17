@@ -154,6 +154,63 @@ ul {
     color: var(--accent-emerald);
 }
 
+.middle.section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.search-bar {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 300px;
+}
+.search-button {
+    background: var(--accent-emerald);
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-icon {
+    width: 25px;
+    height: 25px;
+}
+.cart {
+    position: fixed;
+    bottom: 100px; /* ABOVE back-to-top */
+    right: 30px;
+    width: 100px;
+    height: 120px;
+    background: #20a89a;
+    border-radius: 20%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* <-- change from center to flex-start */
+    padding-top: 8px; /* optional: space from top */
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    z-index: 999;
+}
+
+.nav-cart a{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-cart-icon{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
 .nav-links {
     display: flex;
     gap: 35px;
