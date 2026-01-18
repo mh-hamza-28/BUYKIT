@@ -1,5 +1,5 @@
 BuyKIT is a modern frontend e-commerce project delivering a refined shopping experience for premium football jerseys. Built with HTML5, CSS3, and ES6, it features responsive layouts, elegant UI design, CSS variable theming, and dynamic content, showcasing strong frontend fundamentals, clean architecture,smooth interactions and professional portfolio.
-
+link-
 Technologies Used:
 HTML5, CSS3, JavaScript (ES6+)
 Styling: CSS Grid, Flexbox, CSS Variables, Custom Animations
