@@ -83,4 +83,25 @@ document.querySelectorAll('.jsaddcart').forEach((button) => {
     });
 });
 
+/*MOBILE MENU*/
+
+const menuBtn = document.getElementById("mobileMenuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+// Safety check (important for debugging)
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+    });
+
+    // Optional: close menu when a link is clicked
+    document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+        });
+    });
+} else {
+    console.error("Mobile menu elements not found");
+}
+
    
