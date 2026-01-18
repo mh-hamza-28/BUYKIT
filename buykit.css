@@ -1178,7 +1178,7 @@ hr {
     }
 
     .jersey-grid{
-        grid-template-columns: (2,1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 40px;
     }
     .navbar {
@@ -1236,9 +1236,16 @@ hr {
 }
 
 @media (max-width:768px) {
-      #home {
-        scroll-margin-top: 120px;
-    }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+.navbar {
+    flex-wrap: wrap;
+   padding: 10px 16px;
+  }
+
      .nav-search {
         display: none;
     }
@@ -1279,9 +1286,21 @@ hr {
         
     }
         .jersey-grid{
-           grid-template-columns: repeat(3,1fr);
-        gap: 30px;   
+           grid-template-columns: repeat(2, minmax(0,1fr));
+        gap: 12px;   
         }
+        .jersey-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
     .category-tabs {
         gap: 10px;
     }
@@ -1314,6 +1333,46 @@ hr {
         padding: 0 20px 40px;
     }
 }
+/* ===== MOBILE NAVBAR SIZE FIX (ADD AT END OF FILE) ===== */
+@media (max-width: 768px) {
+
+  /* Reduce navbar height */
+  .navbar {
+    padding: 10px 16px;
+    min-height: auto;
+  }
+
+  /* Reduce logo size */
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .logo-icon {
+    font-size: 22px;
+  }
+
+  /* Hide search bar on mobile */
+  .middle.section {
+    display: none;
+  }
+
+  /* Reduce cart icon size */
+  .nav-cart-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .cart-quantity {
+    font-size: 14px;
+    top: -4px;
+  }
+
+  /* Fix mobile menu position */
+  .mobile-menu-container {
+    top: 64px;
+    height: calc(100vh - 64px);
+  }
+}
 
 /* Small mobile phones */
 @media (max-width: 480px) {
@@ -1329,6 +1388,31 @@ hr {
         grid-template-columns: 1fr;
     }
 }
+/* ===== MOBILE SEARCH BUTTON RESTORE ===== */
+@media (max-width: 768px) {
+
+  /* Show container again */
+  .middle.section {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Hide only the input */
+  .search-bar {
+    display: none;
+  }
+
+  /* Make search button compact */
+  .search-button {
+    padding: 6px;
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .cart-popup {
 position: fixed;
   top: 70px;
