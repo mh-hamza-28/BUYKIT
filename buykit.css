@@ -630,28 +630,46 @@ hr {
     color: var(--accent-emerald);
 }
 
+.product-container {
+  padding-top: 40px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-right: 1px solid rgb(231, 231, 231);
+  border-bottom: 1px solid rgb(231, 231, 231);
 
-.color-dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid var(--medium-gray);
-    cursor: pointer;
-    transition: var(--transition-fast);
+  display: flex;
+  flex-direction:column;
+}
+.product-quantity-container,.size {
+ margin-bottom :17px; 
+ margin-left: 15px;
+ border-radius: 40%;
+}
+.size,
+.product-quantity-container {
+  flex: 1; /* SAME AREA */
+ 
 }
 
-.color-dot:hover,
-.color-dot.active {
-    border-color: var(--primary-dark);
-    transform: scale(1.1);
+.size select,
+.product-quantity-container select {
+    background-color: #000;
+    color: var(--white);
+     font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  width:30%;
+  background-color: var(--accent-emerald);
+  padding: 5px;
+  border-radius: 30%;
 }
 
-.color-dot.white { background: #ffffff; }
-.color-dot.black { background: #1a1a1a; }
-.color-dot.red { background: #c41e3a; }
-.color-dot.navy { background: #1a1a6b; }
-.color-dot.gold { background: #d4af37; }
-
+.product-spacer {
+  flex: 1; 
+}
 .jersey-card .button {
     width: 100%;
     text-align: center;
@@ -1245,4 +1263,32 @@ hr {
     .footer-links {
         grid-template-columns: 1fr;
     }
+}
+.cart-popup {
+position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: var(--accent-emerald); /* Or any color you like */
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 2s ease;
+  text-align: center; 
+  white-space: nowrap;
+  z-index: 10000;
+}
+.cart-popup.show {
+  opacity: 1; 
+  transform: translateX(-50%) translateY(0); 
+  
+}
+.cart-popup.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
 }

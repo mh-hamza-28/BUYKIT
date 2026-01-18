@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BuyKIT Checkout</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Global BuyKIT Styles -->
+  <link rel="stylesheet" href="buykit.css">
+
+  <!-- Checkout Styles -->
+  <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+<!-- ===== Checkout Header ===== -->
+<header class="checkout-header">
+  <div class="checkout-header-content">
+    <a href="index.html" class="checkout-logo">
+      <span class="logo-icon">⚽</span>
+      <span class="logo-text">Buy<span class="logo-highlight">KIT</span></span>
+    </a>
+
+    <div class="checkout-title">
+      Checkout
+    </div>
+
+    <div class="checkout-lock">
+      🔒 Secure
+    </div>
+  </div>
+</header>
+
+<!-- ===== Main Checkout Section ===== -->
+<main class="checkout-main">
+
+  <h1 class="page-title">Review your order</h1>
+
+  <div class="checkout-grid">
+
+    <!-- ===== LEFT: Cart Items ===== -->
+    <section class="checkout-items">
+
+      <div class="checkout-card">
+        <p class="delivery-date">Delivery: Wednesday, Jan 24</p>
+
+        <div class="item-grid">
+          <img src="images/jersey-1.jpg" alt="Jersey" class="product-image">
+
+          <div class="item-info">
+            <p class="product-name">FC Barcelona Home Jersey 2024</p>
+            <p class="product-price">₹2,999</p>
+            <p class="product-stock">In Stock</p>
+
+            <div class="item-actions">
+              <span>Qty: 1</span>
+              <button class="link-btn">Change</button>
+              <button class="link-btn danger">Remove</button>
+            </div>
+          </div>
+
+          <div class="delivery-options">
+            <p class="delivery-options-title">Delivery options</p>
+
+            <label class="delivery-option">
+              <input type="radio" checked>
+              <div>
+                <p class="option-date">Wednesday, Jan 24</p>
+                <p class="option-price">FREE</p>
+              </div>
+            </label>
+
+            <label class="delivery-option">
+              <input type="radio">
+              <div>
+                <p class="option-date">Monday, Jan 22</p>
+                <p class="option-price">₹99</p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== RIGHT: Order Summary ===== -->
+    <aside class="order-summary">
+
+      <div class="checkout-card">
+        <h2 class="summary-title">Order Summary</h2>
+
+        <div class="summary-row">
+          <span>Items (1)</span>
+          <span>₹2,999</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span>FREE</span>
+        </div>
+
+        <div class="summary-row subtotal">
+          <span>Subtotal</span>
+          <span>₹2,999</span>
+        </div>
+
+        <div class="summary-row total">
+          <span>Order Total</span>
+          <span>₹2,999</span>
+        </div>
+
+        <button class="place-order-btn">
+          Place your order
+        </button>
+
+        <p class="secure-note">
+          🔒 Safe & Secure Payments
+        </p>
+      </div>
+
+    </aside>
+
+  </div>
+</main>
+
+</body>
+</html>

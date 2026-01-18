@@ -1,0 +1,272 @@
+/* ================================
+   BuyKIT Checkout Page
+   Amazon-style Layout
+================================ */
+
+/* ---------- Header ---------- */
+.checkout-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: var(--primary-navy);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.checkout-header-content {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-family: 'Montserrat';
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.checkout-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.checkout-lock {
+  font-size: 14px;
+  color: var(--accent-emerald);
+}
+
+/* ---------- Main ---------- */
+.checkout-main {
+  max-width: 1200px;
+  margin: 120px auto 100px;
+  padding: 0 24px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ---------- Grid ---------- */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+}
+
+/* ---------- Cards ---------- */
+.checkout-card {
+  background: white;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+/* ---------- Item Section ---------- */
+.delivery-date {
+  color: var(--accent-emerald);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr 220px;
+  gap: 20px;
+}
+
+.product-image {
+  max-width: 100%;
+}
+
+.product-name {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.product-price {
+  color: var(--accent-coral);
+  font-weight: 700;
+}
+
+.product-stock {
+  color: var(--accent-emerald);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  cursor: pointer;
+}
+
+.link-btn.danger {
+  color: var(--accent-coral);
+}
+
+/* ---------- Delivery Options ---------- */
+.delivery-options-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.delivery-option {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.option-date {
+  font-weight: 600;
+  color: var(--accent-emerald);
+}
+
+.option-price {
+  font-size: 14px;
+  color: gray;
+}
+
+/* ---------- Summary ---------- */
+.summary-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary-row.subtotal {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+
+.summary-row.total {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-coral);
+  border-top: 1px solid #e0e0e0;
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+/* ---------- Button ---------- */
+.place-order-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--accent-emerald);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.place-order-btn:hover {
+  transform: translateY(-2px);
+}
+
+.secure-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: gray;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-grid {
+    grid-template-columns: 100px 1fr;
+  }
+}
+/* Cart Popup */
+.cart-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 14px;
+  width: 320px;
+  display: none;
+  z-index: 9999;
+}
+
+.cart-popup.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+.cart-popup-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-popup img {
+  width: 60px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.popup-text h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.popup-text p {
+  font-size: 13px;
+  color: green;
+  margin: 4px 0 0;
+}
+
+.popup-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
