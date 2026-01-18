@@ -1,10 +1,5 @@
-/* ========================================
-   BuyKIT - Premium Football Jersey Store
-   Enhanced Styles with Sophisticated Colors
-   ======================================== */
 
 /* ---------- CSS VARIABLES (Theme Colors) ---------- */
-/* This is where we define our color palette - easy to change! */
 :root {
     /* Primary Colors */
     --primary-dark: #0d1b2a;
@@ -413,7 +408,7 @@ ul {
     height: 20px;
     border-right: 2px solid rgba(255, 255, 255, 0.5);
     border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    transform: rotate(45deg);
+    transform: rotate(90deg);
     margin: 10px auto 0;
     animation: bounce 2s infinite;
 }
@@ -1244,7 +1239,7 @@ hr {
         
     }
         .jersey-grid{
-           grid-template-columns: 1fr;
+           grid-template-columns: repeat(3,1fr);
         gap: 30px;   
         }
     .category-tabs {
