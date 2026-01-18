@@ -21,7 +21,7 @@
 <header class="checkout-header">
   <div class="checkout-header-content">
     <a href="index.html" class="checkout-logo">
-      <span class="logo-icon">⚽</span>
+      <span class="logo-icon">⚽︎</span>
       <span class="logo-text">Buy<span class="logo-highlight">KIT</span></span>
     </a>
 
@@ -49,11 +49,50 @@
         <p class="delivery-date">Delivery: Wednesday, Jan 24</p>
 
         <div class="item-grid">
-          <img src="images/jersey-1.jpg" alt="Jersey" class="product-image">
+          <img src="images/jersey/barca.png" alt="Jersey" class="product-image">
 
           <div class="item-info">
             <p class="product-name">FC Barcelona Home Jersey 2024</p>
-            <p class="product-price">₹2,999</p>
+            <p class="product-price">$84.99</p>
+            <p class="product-stock">In Stock</p>
+
+            <div class="item-actions">
+              <span>Qty: 1</span>
+              <button class="link-btn">Change</button>
+              <button class="link-btn danger">Remove</button>
+            </div>
+          </div>
+
+          <div class="delivery-options">
+            <p class="delivery-options-title">Delivery options</p>
+
+            <label class="delivery-option">
+              <input type="radio" checked>
+              <div>
+                <p class="option-date">Wednesday, Jan 24</p>
+                <p class="option-price">FREE</p>
+              </div>
+            </label>
+
+            <label class="delivery-option">
+              <input type="radio">
+              <div>
+                <p class="option-date">Monday, Jan 22</p>
+                <p class="option-price">₹99</p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+            <div class="checkout-card">
+        <p class="delivery-date">Delivery: Wednesday, Jan 24</p>
+
+        <div class="item-grid">
+          <img src="images/jersey/milan125.png" alt="Jersey" class="product-image">
+
+          <div class="item-info">
+            <p class="product-name">AC Milan 125th Aniversary</p>
+            <p class="product-price">$106.00</p>
             <p class="product-stock">In Stock</p>
 
             <div class="item-actions">
@@ -89,13 +128,12 @@
 
     <!-- ===== RIGHT: Order Summary ===== -->
     <aside class="order-summary">
-
       <div class="checkout-card">
         <h2 class="summary-title">Order Summary</h2>
 
         <div class="summary-row">
           <span>Items (1)</span>
-          <span>₹2,999</span>
+          <span>$190.99</span>
         </div>
 
         <div class="summary-row">
@@ -105,24 +143,24 @@
 
         <div class="summary-row subtotal">
           <span>Subtotal</span>
-          <span>₹2,999</span>
+          <span>$190.99</span>
         </div>
 
         <div class="summary-row total">
           <span>Order Total</span>
-          <span>₹2,999</span>
+          <span>$190.99</span>
         </div>
 
-        <button class="place-order-btn">
+        <a href="orders.html"><button class="place-order-btn">
           Place your order
-        </button>
+        </button></a>
 
         <p class="secure-note">
           🔒 Safe & Secure Payments
         </p>
-      </div>
+      </aside>
 
-    </aside>
+    </div>
 
   </div>
 </main>

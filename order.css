@@ -26,7 +26,7 @@
 
 /* ---------- Order Container ---------- */
 .order-container {
-  border: 2px solid black;           /* black border for all orders */
+  border: 2px solid black;      
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 40px;

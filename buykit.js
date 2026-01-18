@@ -81,3 +81,5 @@ document.querySelectorAll('.jsaddcart').forEach((button) => {
         }, 2000);
     });
 });
+
+   

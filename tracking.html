@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order Tracking - BuyKIT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- BuyKIT Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- BuyKIT CSS Files -->
+    <link rel="stylesheet" href="buykit.css">
+    <link rel="stylesheet" href="tracking.css">
+  </head>
+  <body>
+    <!-- BuyKIT Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <span class="logo-icon">⚽︎</span> 
+        <span class="logo-text">Buy<span class="logo-highlight">KIT</span></span>
+      </div>
+
+      <div class="middle section">
+        <input class="search-bar" type="text" placeholder="Search">
+        <button class="search-button">
+          <img class="search-icon" src="images/search-icon.png">
+        </button>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="buykit.html">Home</a></li>
+        <li><a href="buykit.html#jerseys">Jerseys</a></li>
+        <li><a href="buykit.html#features">Features</a></li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="buykit.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="main">
+      <div class="order-tracking">
+        <a class="back-to-orders-link link-primary" href="orders.html">
+          ← Back to All Orders
+        </a>
+
+        <div class="delivery-date">
+          Arriving on Monday, June 13
+        </div>
+
+        <div class="order-id">
+          Order ID: #BK2024-06789 | Total: $190.99
+        </div>
+
+        <!-- Products Container Side by Side -->
+        <div class="products-container">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <img class="product-image" src="images/jersey/barca.png" alt="FC Barcelona Jersey">
+            <div class="product-details">
+              <h4 class="product-name">FC Barcelona Jersey</h4>
+              <div class="product-specs">
+                <p><strong>Size:</strong> Large</p>
+                <p><strong>Color:</strong> Home</p>
+                <p><strong>Quantity:</strong> 1</p>
+                <p><strong>League:</strong> La Liga</p>
+              </div>
+              <div class="product-price">
+                <span class="price-label">Price:</span>
+                <span class="price-value">$84.99</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <img class="product-image" src="images/jersey/milan125.png" alt="AC Milan Jersey">
+            <div class="product-details">
+              <h4 class="product-name">AC Milan 125th Anniversary</h4>
+              <div class="product-specs">
+                <p><strong>Size:</strong> Large</p>
+                <p><strong>Color:</strong> Home</p>
+                <p><strong>Quantity:</strong> 1</p>
+                <p><strong>League:</strong> Serie A</p>
+              </div>
+              <div class="product-price">
+                <span class="price-label">Price:</span>
+                <span class="price-value">$106.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h4>Order Summary</h4>
+          <div class="summary-row">
+            <span>Subtotal (2 items):</span>
+            <span>$190.99</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping:</span>
+            <span class="free-shipping">FREE</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax:</span>
+            <span>$15.28</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span>$206.27</span>
+          </div>
+        </div>
+
+        <div class="tracking-status-container">
+          <div class="status-header">
+            <h3>Order Tracking</h3>
+            <span class="status-badge shipped">Shipped</span>
+          </div>
+
+          <div class="progress-labels-container">
+            <div class="progress-label completed">
+              <span class="step-icon">✓</span>
+              <span class="step-text">Order Confirmed</span>
+              <span class="step-date">Jun 8</span>
+            </div>
+            <div class="progress-label completed">
+              <span class="step-icon">📦</span>
+              <span class="step-text">Processing</span>
+              <span class="step-date">Jun 9</span>
+            </div>
+            <div class="progress-label current-status">
+              <span class="step-icon">🚚</span>
+              <span class="step-text">Shipped</span>
+              <span class="step-date">Jun 10</span>
+            </div>
+            <div class="progress-label">
+              <span class="step-icon">🏠</span>
+              <span class="step-text">Out for Delivery</span>
+              <span class="step-date">Jun 12</span>
+            </div>
+            <div class="progress-label">
+              <span class="step-icon">✓</span>
+              <span class="step-text">Delivered</span>
+              <span class="step-date">Jun 13</span>
+            </div>
+          </div>
+
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="shipping-info">
+          <div class="info-section">
+            <h4>Shipping Address</h4>
+            <p>John Smith</p>
+            <p>123 Football Street</p>
+            <p>Sports City, SC 10001</p>
+            <p>Phone: +1 (555) 123-4567</p>
+          </div>
+          
+          <div class="info-section">
+            <h4>Shipping Details</h4>
+            <p>Carrier: BuyKIT Express</p>
+            <p>Tracking Number: BK789456123</p>
+            <p>Estimated Delivery: June 13, 2024</p>
+            <p>Shipping Method: Standard (5-7 days)</p>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+         <a href="https://www.indiapost.gov.in/"><button class="button button-primary">
+            Track Package
+          </button></a>
+          <a href="buykit.html#contact"><button class="button button-outline">
+            Contact Support
+          </button></a>
+          <button class="button button-outline">
+            Download Invoice
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">↑</a>
+
+    <!-- Cart Button -->
+    <a href="orders.html" class="cart">
+      <img src="images/order.png" alt="My Orders">
+      <span class="text"><b>MY ORDERS</b></span>
+    </a>
+
+    <script src="buykit-cart.js"></script>
+  </body>
+</html>
