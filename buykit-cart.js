@@ -1,18 +1,16 @@
-// Reset cart on page refresh
-localStorage.removeItem('buykit-cart');
 
 // BuyKIT Cart
-const cart = [];
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-function saveCart() {
-  localStorage.setItem('buykit-cart', JSON.stringify(cart));
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function addToCart(productTeam, quantity) {
+function addToCart(productTeam, quantity,size) {
   let matchingitem;
 
   cart.forEach((item) => {
-    if (item.productteam === productTeam) {
+    if (item.productteam === productTeam && item.size === size) {
       matchingitem = item;
     }
   });
@@ -22,11 +20,12 @@ function addToCart(productTeam, quantity) {
   } else {
     cart.push({
       productteam: productTeam,
-      quantity: quantity
+      quantity: quantity,
+      size: size
     });
   }
 
-  saveCart();
+  saveCart(cart);
 }
 
 function getCartQuantity() {

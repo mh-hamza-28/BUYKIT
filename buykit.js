@@ -44,9 +44,10 @@ products.forEach((product) => {
                 </div>
             </div>
             <div class="product-spacer"></div>
-            <button class="button button-primary jsaddcart" data-product-id="${product.team}">Add to Cart</button>
-        </div>
-    `;
+         <button class="button button-primary jsaddcart" data-product-id="${product.team}">Add to Cart</button>
+        
+        </div>`
+;
 });
 
 document.querySelector('#jersey-grid').innerHTML = buykit;

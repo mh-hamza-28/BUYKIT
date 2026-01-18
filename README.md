@@ -6,7 +6,7 @@ Technologies Used:
 
 HTML5, CSS3, JavaScript (ES6+)
 Styling: CSS Grid, Flexbox, CSS Variables, Custom Animations
-Fonts: Google Fonts (Montserrat, Open Sans
+Fonts: Google Fonts (Montserrat, Open Sans)
 Icons: Custom PNG icons
 Storage: localStorage for cart persistence
 

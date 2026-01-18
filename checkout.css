@@ -16,9 +16,11 @@
 }
 
 .checkout-header-content {
+  position: absolute;
   max-width: 1200px;
   width: 100%;
   padding: 0 24px;
+  padding-right: 38%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,20 +33,17 @@
   color: white;
   font-family: 'Montserrat';
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 800;  
+  text-align: center;
 }
 
 .checkout-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 1000;
   color: white;
-}
+ 
 
-.checkout-lock {
-  font-size: 14px;
-  color: var(--accent-emerald);
 }
-
 /* ---------- Main ---------- */
 .checkout-main {
   max-width: 1200px;
@@ -53,9 +52,11 @@
 }
 
 .page-title {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 24px;
+  font-size: 40px;
+  font-weight: 1000;
+   margin-bottom: 24px; 
+   padding-right: 30%;
+    color: var(--primary-dark);
 }
 
 /* ---------- Grid ---------- */
@@ -126,6 +127,29 @@
 
 .link-btn.danger {
   color: var(--accent-coral);
+}
+.card-buttons {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.card-buttons button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+.btn-add {
+  background-color: black;
+}
+
+.btn-remove {
+  background-color: red;
 }
 
 /* ---------- Delivery Options ---------- */
