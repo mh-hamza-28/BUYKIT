@@ -23,9 +23,9 @@
 .orders-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px; /* spacing between cards */
-  padding: 20px; /* optional padding around grid */
-  justify-items: start; /* align cards to left */
+  gap: 5px; /* spacing between cards */
+  padding: 5px; /* optional padding around grid */
+  justify-items: center; /* align cards to left */
 }
 
 /* Order container inside the grid */
@@ -278,5 +278,16 @@
   .track-package-button {
     width: 100%;
     padding: 12px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .orders-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orders-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
   }
 }

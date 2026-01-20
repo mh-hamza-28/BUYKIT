@@ -43,13 +43,11 @@
           ← Back to All Orders
         </a>
 
-        <div class="delivery-date">
-          Arriving on Monday, June 13
-        </div>
+       <div class="order-header">
+  <div class="delivery-date"></div>
+  <div class="order-id"></div>
+</div>
 
-        <div class="order-id">
-          Order ID: #BK2024-06789 | Total: $190.99
-        </div>
 
         <!-- Products Container Side by Side -->
         <div class="products-container">
@@ -57,79 +55,13 @@
 
         <div class="order-summary">
           <h4>Order Summary</h4>
-          <div class="summary-row">
-            <span>Subtotal (2 items):</span>
-            <span>$190.99</span>
-          </div>
-          <div class="summary-row">
-            <span>Shipping:</span>
-            <span class="free-shipping">FREE</span>
-          </div>
-          <div class="summary-row">
-            <span>Tax:</span>
-            <span>$15.28</span>
-          </div>
-          <div class="summary-row total">
-            <span>Total:</span>
-            <span>$206.27</span>
-          </div>
         </div>
+         
 
-        <div class="tracking-status-container">
-          <div class="status-header">
-            <h3>Order Tracking</h3>
-            <span class="status-badge shipped">Shipped</span>
-          </div>
-
-          <div class="progress-labels-container">
-            <div class="progress-label completed">
-              <span class="step-icon">✓</span>
-              <span class="step-text">Order Confirmed</span>
-              <span class="step-date">Jun 8</span>
-            </div>
-            <div class="progress-label completed">
-              <span class="step-icon">📦</span>
-              <span class="step-text">Processing</span>
-              <span class="step-date">Jun 9</span>
-            </div>
-            <div class="progress-label current-status">
-              <span class="step-icon">🚚</span>
-              <span class="step-text">Shipped</span>
-              <span class="step-date">Jun 10</span>
-            </div>
-            <div class="progress-label">
-              <span class="step-icon">🏠</span>
-              <span class="step-text">Out for Delivery</span>
-              <span class="step-date">Jun 12</span>
-            </div>
-            <div class="progress-label">
-              <span class="step-icon">✓</span>
-              <span class="step-text">Delivered</span>
-              <span class="step-date">Jun 13</span>
-            </div>
-          </div>
-
-          <div class="progress-bar-container">
-            <div class="progress-bar" style="width: 60%;"></div>
-          </div>
-        </div>
 
         <div class="shipping-info">
-          <div class="info-section">
-            <h4>Shipping Address</h4>
-            <p>John Smith</p>
-            <p>123 Football Street</p>
-            <p>Sports City, SC 10001</p>
-            <p>Phone: +1 (555) 123-4567</p>
-          </div>
-          
-          <div class="info-section">
-            <h4>Shipping Details</h4>
-            <p>Carrier: BuyKIT Express</p>
-            <p>Tracking Number: BK789456123</p>
-            <p>Estimated Delivery: June 13, 2024</p>
-            <p>Shipping Method: Standard (5-7 days)</p>
-          </div>
+          <div class="info-section"></div>
+            <div class="info-section"></div>
         </div>
 
         <div class="action-buttons">
@@ -145,16 +77,13 @@
         </div>
   
     </div>
-
+  </div>
+  
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top">↑</a>
-
-    <!-- Cart Button -->
-    <a href="orders.html" class="cart">
-      <img src="images/order.png" alt="My Orders">
-      <span class="text"><b>MY ORDERS</b></span>
-    </a>
-
-    <script src="buykit-cart.js"></script>
   </body>
+<script src="tracking.js"></script>
+<script src="buykit-cart.js"></script>
+<script src="order-tracking.js"></script>
+<script src="product.js"></script>
 </html>

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (orders.length === 0) {
       ordersGrid.innerHTML = `
-        <div class="no-orders-message">
+        <div class="no-orders-message" style="text-align:centre;">
           <p>No orders placed yet.</p>
           <a href="index.html" class="button button-primary">Shop Now</a>
         </div>
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="order-header-right-section">
               <span class="order-header-label">Total</span>
-              <span class="order-total">₹${((item.price / 100) * item.quantity).toFixed(2)}</span>
+              <span class="order-total">$${((item.price / 100) * item.quantity).toFixed(2)}</span>
             </div>
           </div>
 
@@ -80,3 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOrders();
   });
 });
+function trackOrder(order) {
+  localStorage.setItem("activeOrder", JSON.stringify(order));
+  window.location.href = "tracking.html";
+}

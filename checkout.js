@@ -141,7 +141,41 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Your cart is empty!');
       return;
     }
+      /* =========================
+       CREATE ACTIVE ORDER
+       (Used by tracking.html)
+       ========================= */
 
+    const itemsTotal = cart.reduce((sum, item) => {
+      const product = products.find(p => p.team === item.productteam);
+      return product ? sum + (product.price / 100) * item.quantity : sum;
+    }, 0);
+
+    const deliveryFee = itemsTotal < 500 && itemsTotal > 0 ? 20 : 0;
+    const orderTotal = itemsTotal + deliveryFee;
+
+    const activeOrder = {
+      id: "BK" + Date.now(),
+      total: orderTotal,
+      status: "Shipped",
+      progress: 3,
+      products: cart.map(item => {
+        const product = products.find(p => p.team === item.productteam);
+        return {
+          name: product.team,
+          size: item.size,
+          player: "Custom",
+          quantity: item.quantity,
+          price: product.price / 100,
+          image: product.image
+        };
+      })
+    };
+
+    localStorage.setItem("activeOrder", JSON.stringify(activeOrder));
+    /* =========================
+        save TO ORDERS history
+        ========================= */
     const newOrders = cart.map(item => {
       const product = products.find(p => p.team === item.productteam);
       return {
