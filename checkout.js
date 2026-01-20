@@ -80,45 +80,42 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart[index].quantity > 1) {
           cart[index].quantity -= 1;
         } else {
-          cart.splice(index, 1); // Remove item if quantity reaches 0
+          cart.splice(index, 1);
         }
         saveCart();
         renderCheckout();
         updateCartQuantityDisplay();
       });
     });
+
     updateOrderSummary();
     updateCartQuantityDisplay();
   }
-   function updateOrderSummary() {
-      let itemsTotal = cart.reduce((sum, item) => {
-        const product = products.find(p => p.team === item.productteam);
-        return product ? sum + (product.price / 100) * item.quantity : sum;
-      }, 0);
-  
-      let deliveryFee = itemsTotal < 500 && itemsTotal > 0 ? 20 : 0;
-      let orderTotal = itemsTotal + deliveryFee;
-  
-      const summaryContainer = document.querySelector('.order-summary');
-      if (summaryContainer) {
-        summaryContainer.innerHTML = `
-          <div class="checkout-card">
-            <h2 class="summary-title">Order Summary</h2>
-  
-            <div class="summary-row">
-              <span>Items (${getCartQuantity()})</span>
-              <span>$${itemsTotal.toFixed(2)}</span>
-              
-            </div>
-  
-            <div class="summary-row">
-              <span>Delivery</span>
-                 <span>${deliveryFee === 0 ? 'FREE' : '$20'}</span>
+
+  // Update order summary
+  function updateOrderSummary() {
+    let itemsTotal = cart.reduce((sum, item) => {
+      const product = products.find(p => p.team === item.productteam);
+      return product ? sum + (product.price / 100) * item.quantity : sum;
+    }, 0);
+
+    let deliveryFee = itemsTotal < 500 && itemsTotal > 0 ? 20 : 0;
+    let orderTotal = itemsTotal + deliveryFee;
+
+    const summaryContainer = document.querySelector('.order-summary');
+    if (summaryContainer) {
+      summaryContainer.innerHTML = `
+        <div class="checkout-card">
+          <h2 class="summary-title">Order Summary</h2>
+
+          <div class="summary-row">
+            <span>Items (${getCartQuantity()})</span>
+            <span>$${itemsTotal.toFixed(2)}</span>
           </div>
 
-          <div class="summary-row subtotal">
-            <span>Subtotal</span>
-            <span>$${itemsTotal.toFixed(2)}</span>
+          <div class="summary-row">
+            <span>Delivery</span>
+            <span>${deliveryFee === 0 ? 'FREE' : '$20'}</span>
           </div>
 
           <div class="summary-row total">
@@ -126,46 +123,46 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>$${orderTotal.toFixed(2)}</span>
           </div>
 
-          <a href="orders.html"><button class="place-order-btn">Place your order</button></a>
+          <button class="place-order-btn">Place your order</button>
           <p class="secure-note">🔒 Safe & Secure Payments</p>
-        </div>`;
-      }
+        </div>
+      `;
     }
+  }
 
-  // Initial render and update
   renderCheckout();
   updateCartQuantityDisplay();
-});
 
-// // Sample products array for reference
-// const products = [
-//   { team: 'Team A', price: 2500, image: 'team-a.jpg', season: '2022', league: 'League 1' },
-//   { team: 'Team B', price: 3000, image: 'team-b.jpg', season: '2022', league: 'League 1' },
-//   // Add more products as needed
-// ];
-// Get the orders container
-const ordersGrid = document.getElementById('orders-grid');
+  // ✅ SINGLE place-order handler (appends orders)
+  document.body.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('place-order-btn')) return;
 
-// Retrieve orders from localStorage or your cart system
-// Example: assuming you store cart items as JSON in localStorage
-let orders = JSON.parse(localStorage.getItem('cartItems')) || [];
+    if (cart.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
 
-// Check if there are any orders
-if (orders.length === 0) {
-  // Display a "No orders" message
-  ordersGrid.innerHTML = `
-    <div class="no-orders-message">
-      <p>Your cart is empty. Add some jerseys to see them here!</p>
-      <a href="index.html" class="button button-primary">Shop Now</a>
-    </div>
-  `;
-} else {
-  // Render the orders normally
-  orders.forEach(order => {
-    ordersGrid.innerHTML += `
-      <div class="order-container">
-        <!-- Order details like product, quantity, total -->
-      </div>
-    `;
+    const newOrders = cart.map(item => {
+      const product = products.find(p => p.team === item.productteam);
+      return {
+        team: product.team,
+        image: product.image,
+        season: product.season,
+        league: product.league,
+        price: product.price,
+        quantity: item.quantity,
+        size: item.size,
+        orderedAt: new Date().toISOString()
+      };
+    });
+
+    const previousOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    const updatedOrders = [...previousOrders, ...newOrders];
+
+    localStorage.setItem('orders', JSON.stringify(updatedOrders));
+    localStorage.removeItem('cart');
+
+    window.location.href = 'orders.html';
   });
-}
+
+});

@@ -18,20 +18,27 @@
 }
 
 /* ---------- Orders Grid ---------- */
+
+/* Orders grid container */
 .orders-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* spacing between cards */
+  padding: 20px; /* optional padding around grid */
+  justify-items: start; /* align cards to left */
 }
 
-/* ---------- Order Container ---------- */
+/* Order container inside the grid */
 .order-container {
   border: 2px solid black;      
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 40px;
+  border-radius: 12px;
+  padding: 10px;
   box-shadow: var(--shadow-md);
+  font-size: 14px;
+  background-color: #fff; /* optional for card look */
 }
+
+
 
 /* ---------- Order Header ---------- */
 .order-header {
@@ -124,8 +131,44 @@
   font-size: 14px;
   color: var(--dark-gray);
 }
+/* Cancel Order Button */
+.cancel-order-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #ff4d4f; /* Red for cancel */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cancel-order-btn:hover {
+  background-color: #e63946;
+  transform: translateY(-2px);
+}
+
+.cancel-order-btn:active {
+  transform: translateY(0);
+  background-color: #d62828;
+}
+
+/* Optional: align button nicely inside product card */
+.product-card .cancel-order-btn {
+  width: 120px;
+  text-align: center;
+}
 
 /* ---------- Buttons ---------- */
+.no-orders-message{
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+  color: var(--dark-gray);
+}
 .buy-again-button {
   font-size: 15px;
   width: 100%;
