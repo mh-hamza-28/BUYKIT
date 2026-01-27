@@ -1,3 +1,4 @@
+import { products } from "./product.js";
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get cart from localStorage

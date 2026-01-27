@@ -1,3 +1,4 @@
+import { products } from "./product.js";
 let buykit = '';
 products.forEach((product) => {
     // Determine badge class

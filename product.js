@@ -1,5 +1,5 @@
 
-const products = [
+export const products = [
     {
         image: "images/jersey/r-madrid.png",
         team: "REAL MADRID",
