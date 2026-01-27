@@ -43,18 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
      <div class="info-section">
             <h4>Shipping Details</h4>
+            <p>address:123street</p>
             <p>Carrier:<a href="https://www.indiapost.gov.in/"style="color:red;">India Post</a> </p>
             <p>Tracking Number: BK789456123</p>
-            <p>Estimated Delivery: June 13, 2024</p>
-            <p>Shipping Method: Standard (5-7 days)</p>
-          </div>
-          
-          <div class="info-section">
-            <h4>Shipping Details</h4>
-            <p>Carrier: BuyKIT Express</p>
-            <p>Tracking Number: BK789456123</p>
-            <p>Estimated Delivery: June 13, 2024</p>
-            <p>Shipping Method: Standard (5-7 days)</p>
+            <p>Estimated Delivery: ${new Date(Date.now() + 4 * 86400000).toDateString()}</p>
           </div>
         </div>
       `;
@@ -96,24 +88,4 @@ document.addEventListener("DOMContentLoaded", () => {
       <span>$${total.toFixed(2)}</span>
     </div>
   `;
-
-  /* =========================
-     PROGRESS BAR
-     ========================= */
-
-  const steps = document.querySelectorAll(".progress-label");
-  const progressBar = document.querySelector(".progress-bar");
-
-  steps.forEach((step, index) => {
-    step.classList.remove("completed", "current-status");
-
-    if (index < order.progress - 1) {
-      step.classList.add("completed");
-    } else if (index === order.progress - 1) {
-      step.classList.add("current-status");
-    }
-  });
-
-  const percent = ((order.progress - 1) / (steps.length - 1)) * 100;
-  progressBar.style.width = `${percent}%`;
 });
