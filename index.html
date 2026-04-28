@@ -7,6 +7,7 @@
     <meta name="description" content="Shop authentic football jerseys from top clubs worldwide. Premium quality, fast shipping.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="buykit.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
         <input class="search-bar" type="text" placeholder="Search">
 
         <button class="search-button">
-          <img class="search-icon" src="images/search-icon.png">
+          <img class="search-icon" src="images/icons/search-icon.png">
         </button>
     </div>
 
@@ -36,7 +37,7 @@
 </ul>          
 <ul class="nav-cart">
         <a href="checkout.html">
-            <img src="images/cart-icon.png" alt="My cart" class="nav-cart-icon"><p class="cart-quantity jscartqtty">0</p>
+            <img src="images/icons/cart-icon.png" alt="My cart" class="nav-cart-icon"><p class="cart-quantity jscartqtty">0</p>
              MY CART
         </a>
     </ul>
@@ -96,13 +97,13 @@
 
         <!-- Category Tabs -->
         <div class="category-tabs">
-            <button class="tab-btn active">All</button>
-            <button class="tab-btn"><img src="category/laliga.png"><p></B>LA LIGA<p></button>
-            <button class="tab-btn"><img src="category/pl.png"><p>PREMIER LEAGUE</P></button>
-            <button class="tab-btn"><img src="category/seriea.png"><p>SERIE A</p></button>
-            <button class="tab-btn"><img src="category/bundesliga.png"><p>BUNDESLIGA</p></button>
-             <button class="tab-btn"><img src="category/MLS.png"><p>MLS</p></button>
-              <button class="tab-btn"><img src="category/SPL.png"><p>SAUDI PRO LEAGUE</p></button>
+            <button class="tab-btn active" data-category="All">All</button>
+            <button class="tab-btn" data-category="LA LIGA"><img src="category/laliga.png"><p>LA LIGA</p></button>
+            <button class="tab-btn" data-category="PREMIER LEAGUE"><img src="category/pl.png"><p>PREMIER LEAGUE</p></button>
+            <button class="tab-btn" data-category="SERIE A"><img src="category/seriea.png"><p>SERIE A</p></button>
+            <button class="tab-btn" data-category="BUNDESLIGA"><img src="category/bundesliga.png"><p>BUNDESLIGA</p></button>
+             <button class="tab-btn" data-category="MLS"><img src="category/MLS.png"><p>MLS</p></button>
+              <button class="tab-btn" data-category="SAUDI PRO LEAGUE"><img src="category/SPL.png"><p>SAUDI PRO LEAGUE</p></button>
         </div>
         <hr class="hr">
         <div class="main">
@@ -191,17 +192,6 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="newsletter-content">
-            <h2>Join the BuyKIT Family</h2>
-            <p>Subscribe for exclusive deals, new arrivals, and 10% off your first order!</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="button button-primary">Subscribe</button>
-            </form>
-        </div>
-    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -302,8 +292,8 @@
         </div>
     </footer>
     <!-- Back to Top Button -->
-   <a href="orders.html" class="cart">
-    <img src="images/order.png" alt="Cart"><span class="text"><b>MY ORDERS</b></span>
+   <a href="orders.html" class="cart orders-icon">
+    <span style="font-size: 24px;">📦</span><span class="text"><b>MY ORDERS</b></span>
 </a>
 
 <a href="#home" class="back-to-top">↑</a>

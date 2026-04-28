@@ -8,8 +8,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="buykit.css">
+  <link rel="stylesheet" href="responsive.css">
 
   <link rel="stylesheet" href="checkout.css">
+  <style>
+    .checkout-header .middle.section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checkout-header .search-bar {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 200px;
+    }
+    .checkout-header .search-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .checkout-header .search-icon {
+      width: 20px;
+      height: 20px;
+    }
+    /* Empty Cart Popup - matches website style */
+    #empty-cart-popup {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: #e74c3c;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      text-align: center;
+      white-space: nowrap;
+      z-index: 10000;
+    }
+    #empty-cart-popup.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Shipping Details Section */
+    .shipping-details-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    .shipping-details-section h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--primary-dark);
+    }
+    .shipping-info-display {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .shipping-info-display p {
+      margin: 4px 0;
+    }
+    .add-shipping-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: var(--accent-blue);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .add-shipping-btn:hover {
+      background: var(--accent-emerald);
+    }
+    .edit-shipping-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: transparent;
+      color: var(--accent-blue);
+      text-decoration: none;
+      border: 1px solid var(--accent-blue);
+      border-radius: 6px;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+    .edit-shipping-btn:hover {
+      background: var(--accent-blue);
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,6 +119,13 @@
       <span class="logo-icon">⚽︎</span>
       <span class="logo-text">Buy<span class="logo-highlight">KIT</span></span>
     </a>
+
+    <div class="middle section" style="margin: 0 20px;">
+        <input class="search-bar" type="text" placeholder="Search">
+        <button class="search-button">
+            <img class="search-icon" src="images/icons/search-icon.png" alt="Search">
+        </button>
+    </div>
 
     <div class="checkout-title">
       Checkout
@@ -38,14 +143,22 @@
 
     <!-- ===== LEFT: Cart Items ===== -->
     <section class="checkout-items"></section>
-    </section>
 
     <!-- ===== RIGHT: Order Summary ===== -->
     <aside class="order-summary">
-        <button class="place-order-btn">
+        <!-- Shipping Details Section -->
+        <div class="shipping-details-section" id="shipping-details-section">
+          <h3>Shipping Address</h3>
+          <div id="shipping-info-display" class="shipping-info-display">
+            <p style="color: #666; font-size: 14px;">No shipping address added yet.</p>
+            <a href="shipping-form.html" class="add-shipping-btn">+ Add Shipping Details</a>
+          </div>
+        </div>
+
+        <button class="place-order-btn" id="place-order-btn">
           Place your order
         </button>
- 
+
         <p class="secure-note">
           🔒 Safe & Secure Payments
         </p>
@@ -54,6 +167,10 @@
     </div>
   </div>
 </main>
+
+<!-- Empty Cart Popup -->
+<div id="empty-cart-popup" class="cart-popup">Your cart is empty!</div>
+
 <script src="buykit-cart.js"></script>
 <script type="module" src="checkout.js"></script>
 <script src="order.js"></script>

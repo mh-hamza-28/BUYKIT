@@ -1,0 +1,632 @@
+/* ============================================
+   COMPREHENSIVE RESPONSIVE STYLES
+   For all screen sizes: Mobile, Tablet, iPad, Desktop
+   ============================================ */
+
+/* ---------- BASE RESPONSIVE VARIABLES ---------- */
+:root {
+  --mobile-padding: 16px;
+  --tablet-padding: 24px;
+  --desktop-padding: 40px;
+  --mobile-gap: 12px;
+  --tablet-gap: 20px;
+  --desktop-gap: 30px;
+}
+
+/* ---------- LARGE DESKTOP (1440px+) ---------- */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .jersey-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+}
+
+/* ---------- DESKTOP (1200px - 1439px) ---------- */
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .jersey-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+  
+  .hero-content h1 {
+    font-size: 56px;
+  }
+}
+
+/* ---------- SMALL DESKTOP / LARGE TABLET (992px - 1199px) ---------- */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .jersey-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+  }
+  
+  .navbar {
+    padding: 15px 30px;
+  }
+}
+
+/* ---------- TABLET / iPad (768px - 991px) ---------- */
+@media (max-width: 991px) and (min-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 12px 24px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  /* Hero */
+  .hero-content h1 {
+    font-size: 42px;
+  }
+  
+  .hero-content p {
+    font-size: 18px;
+  }
+  
+  /* Jersey Grid */
+  .jersey-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 20px;
+  }
+  
+  .jersey-card {
+    max-width: 100%;
+  }
+  
+  /* Features & Testimonials */
+  .features-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  /* Contact & Footer */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  /* Search bar */
+  .search-bar {
+    width: 200px;
+  }
+  
+  /* Orders page */
+  .orders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .order-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Checkout */
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Tracking */
+  .products-container {
+    flex-direction: column;
+  }
+  
+  .product-card {
+    max-width: 100%;
+  }
+  
+  /* Category tabs */
+  .category-tabs {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tab-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ---------- SMALL TABLET / LARGE MOBILE (576px - 767px) ---------- */
+@media (max-width: 767px) and (min-width: 576px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Navbar */
+  .navbar {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+  
+  .logo-text {
+    font-size: 22px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  .middle-section {
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .search-bar {
+    width: 100%;
+  }
+  
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding: 80px 16px;
+  }
+  
+  .hero-content h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  
+  .hero-content p {
+    font-size: 16px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .hero-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Jersey Grid */
+  .jersey-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .jersey-card {
+    padding: 12px;
+  }
+  
+  .jersey-image {
+    height: 180px;
+  }
+  
+  .price {
+    font-size: 18px;
+  }
+  
+  /* Features */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Contact */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Section padding */
+  .jerseys,
+  .features,
+  .testimonials,
+  .newsletter,
+  .contact {
+    padding: 50px 16px;
+  }
+  
+  .section-header h2 {
+    font-size: 32px;
+  }
+  
+  /* Orders page */
+  .orders-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .order-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .order-details-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 15px;
+  }
+  
+  /* Checkout */
+  .checkout-card {
+    padding: 15px;
+  }
+  
+  .item-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  /* Tracking */
+  .order-tracking {
+    padding: 20px 16px;
+  }
+  
+  .product-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 15px;
+  }
+  
+  /* Category tabs */
+  .category-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 5px;
+  }
+  
+  .tab-btn {
+    white-space: nowrap;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  /* Mobile menu */
+  .mobile-menu-container {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+  
+  /* Form elements */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  /* Cart quantity */
+  .cart-quantity {
+    font-size: 12px;
+    top: -2px;
+    right: -2px;
+  }
+  
+  /* Popup */
+  .cart-popup {
+    width: 90%;
+    max-width: 300px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- MOBILE (480px - 575px) ---------- */
+@media (max-width: 575px) and (min-width: 480px) {
+  /* Hero */
+  .hero-content h1 {
+    font-size: 32px;
+  }
+  
+  .stat-number {
+    font-size: 32px;
+  }
+  
+  /* Jersey grid */
+  .jersey-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .jersey-card h3 {
+    font-size: 14px;
+  }
+  
+  .price {
+    font-size: 16px;
+  }
+  
+  /* Footer links */
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Buttons */
+  .button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  /* Section headers */
+  .section-header h2 {
+    font-size: 28px;
+  }
+  
+  /* Invoice table */
+  .invoice-table {
+    font-size: 13px;
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    padding: 8px;
+  }
+}
+
+/* ---------- SMALL MOBILE (below 480px) ---------- */
+@media (max-width: 479px) {
+  /* Hero */
+  .hero-content h1 {
+    font-size: 26px;
+  }
+  
+  .hero-content p {
+    font-size: 14px;
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
+  
+  /* Jersey grid - single column on very small screens */
+  .jersey-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .jersey-card {
+    max-width: 100%;
+  }
+  
+  /* Product card adjustments */
+  .product-card {
+    padding: 15px;
+  }
+  
+  .product-image-container {
+    height: 200px;
+  }
+  
+  /* Order actions */
+  .order-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .buy-again-button,
+  .track-package-button,
+  .invoice-button {
+    width: 100%;
+  }
+  
+  /* Invoice */
+  .invoice-container {
+    padding: 20px 15px;
+  }
+  
+  .invoice-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .invoice-title {
+    text-align: center;
+  }
+  
+  .invoice-sections {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .invoice-summary {
+    width: 100%;
+  }
+  
+  /* Tracking detail */
+  .tracking-detail-container {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+  
+  .tracking-status-icon {
+    font-size: 48px;
+  }
+  
+  .tracking-status-title {
+    font-size: 20px;
+  }
+  
+  .tracking-id-box .tracking-number {
+    font-size: 18px;
+  }
+  
+  /* Navbar */
+  .nav-cart-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Category tabs */
+  .tab-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  /* Size selector */
+  .size select,
+  .product-quantity-container select {
+    font-size: 12px;
+  }
+  
+  /* Checkout */
+  .checkout-items {
+    padding: 10px;
+  }
+  
+  .card-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .btn-add,
+  .btn-remove {
+    width: 100%;
+  }
+}
+
+/* ---------- iPad SPECIFIC FIXES ---------- */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    
+  .jersey-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .navbar {
+    padding: 15px 30px;
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+  }
+}
+
+/* ---------- iPad Pro ---------- */
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+  .jersey-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+}
+
+/* ---------- LANDSCAPE ORIENTATION ---------- */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 60px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  
+  .mobile-menu-container {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+/* ---------- PRINT STYLES ---------- */
+@media print {
+  .navbar,
+  .mobile-menu-btn,
+  .back-to-top,
+  .cart.orders-icon,
+  .button:not(.print-btn),
+  .back-link {
+    display: none !important;
+  }
+  
+  .invoice-container,
+  .tracking-detail-container {
+    box-shadow: none;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  body {
+    background: white;
+  }
+}
+
+/* ---------- SAFE AREA INSETS (iPhone X+) ---------- */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .navbar {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  
+  .mobile-menu-container {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

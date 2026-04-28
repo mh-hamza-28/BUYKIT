@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice - BUYKIT</title>
+  <link rel="stylesheet" href="buykit.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="invoice.css">
+</head>
+<body>
+  <div class="invoice-container">
+    <a href="orders.html" class="back-link">← Back to Orders</a>
+    
+    <div class="invoice-header">
+      <div class="company-info">
+        <h1>BUYKIT</h1>
+        <p>Sports Merchandise Store</p>
+        <p>support@buykit.com</p>
+      </div>
+      <div class="invoice-title">
+        <h2>INVOICE</h2>
+        <p id="invoice-order-id">Order ID: -</p>
+        <p id="invoice-date">Date: -</p>
+      </div>
+    </div>
+
+    <div class="invoice-sections">
+      <div class="bill-to">
+        <h3>Bill To:</h3>
+        <div id="billing-details">
+          <p>-</p>
+        </div>
+      </div>
+      
+      <div class="ship-to">
+        <h3>Ship To:</h3>
+        <div id="shipping-details">
+          <p>-</p>
+        </div>
+      </div>
+    </div>
+
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="invoice-items">
+        <!-- Items will be loaded here -->
+      </tbody>
+    </table>
+
+    <div class="invoice-summary">
+      <div class="summary-row">
+        <span>Subtotal:</span>
+        <span id="subtotal">₹0</span>
+      </div>
+      <div class="summary-row">
+        <span>Shipping:</span>
+        <span id="shipping-cost">₹0</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total Amount:</span>
+        <span id="total-amount">₹0</span>
+      </div>
+    </div>
+
+    <div class="invoice-footer">
+      <p>Thank you for shopping with BUYKIT!</p>
+      <p>For any queries, contact us at support@buykit.com</p>
+      <button class="print-btn" onclick="window.print()">🖨️ Print Invoice</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Function to group orders by time (same logic as order.js)
+      function groupOrdersByTime(orders) {
+        const groups = [];
+        let currentGroup = [];
+        let currentTime = null;
+
+        const sortedOrders = [...orders].sort((a, b) => new Date(b.orderedAt) - new Date(a.orderedAt));
+
+        sortedOrders.forEach((order) => {
+          const orderTime = new Date(order.orderedAt).getTime();
+
+          if (currentGroup.length === 0 || Math.abs(orderTime - currentTime) < 5000) {
+            currentGroup.push(order);
+            currentTime = orderTime;
+          } else {
+            groups.push(currentGroup);
+            currentGroup = [order];
+            currentTime = orderTime;
+          }
+        });
+
+        if (currentGroup.length > 0) {
+          groups.push(currentGroup);
+        }
+
+        return groups;
+      }
+
+      // Get order from URL parameter or localStorage
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('order');
+      const itemIndex = urlParams.get('item'); // For individual item invoice
+      const groupIndex = urlParams.get('group'); // For grouped orders
+      
+      let order = null;
+      let isSingleItem = false;
+      
+      if (orderId) {
+        // Find order from orders list
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        order = orders.find(o => o.id === orderId);
+      } else if (groupIndex !== null) {
+        // Group order - get all items from the group
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const orderGroups = groupOrdersByTime(orders);
+        
+        if (orderGroups[groupIndex]) {
+          const group = orderGroups[groupIndex];
+          const firstOrder = group[0];
+          const groupTotal = group.reduce((sum, item) => sum + ((item.price || 0) * item.quantity), 0);
+          
+          order = {
+            id: "BK" + new Date(firstOrder.orderedAt).getTime(),
+            total: groupTotal,
+            orderedAt: firstOrder.orderedAt,
+            shipping: firstOrder.shipping || {},
+            products: group.map(item => ({
+              name: item.team,
+              size: item.size,
+              player: "Custom",
+              quantity: item.quantity,
+              price: item.price,
+              image: item.image
+            }))
+          };
+        }
+      } else if (itemIndex !== null) {
+        // Individual item invoice - create order from single item
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const item = orders[parseInt(itemIndex)];
+        if (item) {
+          isSingleItem = true;
+          order = {
+            id: "ITEM" + (item.originalIndex || itemIndex),
+            orderedAt: item.orderedAt,
+            shipping: item.shipping || {},
+            products: [{
+              name: item.team,
+              size: item.size,
+              player: "Custom",
+              quantity: item.quantity,
+              price: item.price,
+              image: item.image
+            }]
+          };
+        }
+      }
+      
+      // Fallback to activeOrder
+      if (!order) {
+        order = JSON.parse(localStorage.getItem('activeOrder'));
+      }
+      
+      if (!order) {
+        document.querySelector('.invoice-container').innerHTML = `
+          <a href="orders.html" class="back-link">← Back to Orders</a>
+          <div style="text-align: center; padding: 50px;">
+            <h2>No order found</h2>
+            <p>Please select an order to view invoice.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // Populate invoice data
+      document.getElementById('invoice-order-id').textContent = `Order ID: ${order.id}`;
+      document.getElementById('invoice-date').textContent = `Date: ${order.orderedAt ? new Date(order.orderedAt).toDateString() : new Date().toDateString()}`;
+      
+      // Billing/Shipping details
+      const shipping = order.shipping || {};
+      const addressHtml = `
+        <p><strong>${shipping.fullName || 'N/A'}</strong></p>
+        <p>${shipping.mobile || 'N/A'}</p>
+        <p>${shipping.email || 'N/A'}</p>
+        <p>${shipping.street || 'N/A'}</p>
+        <p>${shipping.city || 'N/A'}, ${shipping.state || 'N/A'} - ${shipping.pincode || 'N/A'}</p>
+        ${shipping.landmark ? `<p>Landmark: ${shipping.landmark}</p>` : ''}
+      `;
+      
+      document.getElementById('billing-details').innerHTML = addressHtml;
+      document.getElementById('shipping-details').innerHTML = addressHtml;
+      
+      // Invoice items
+      let itemsHtml = '';
+      let subtotal = 0;
+      
+      if (order.products && order.products.length > 0) {
+        order.products.forEach((product, index) => {
+          const itemTotal = product.price * product.quantity;
+          subtotal += itemTotal;
+          
+          itemsHtml += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>
+                <img src="${product.image}" alt="${product.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+              </td>
+              <td>
+                <strong>${product.name}</strong><br>
+                <small>Size: ${product.size}, Player: ${product.player || 'Custom'}</small>
+              </td>
+              <td>${product.quantity}</td>
+              <td>₹${product.price.toFixed(0)}</td>
+              <td>₹${itemTotal.toFixed(0)}</td>
+            </tr>
+          `;
+        });
+      } else if (order.team) {
+        // Single item order
+        const itemTotal = (order.price || 0) * (order.quantity || 1);
+        subtotal = itemTotal;
+        
+        itemsHtml += `
+          <tr>
+            <td>1</td>
+            <td>
+              <img src="${order.image || ''}" alt="${order.team}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
+            </td>
+            <td>
+              <strong>${order.team}</strong><br>
+              <small>Size: ${order.size || 'M'}, League: ${order.league || 'N/A'}</small>
+            </td>
+            <td>${order.quantity || 1}</td>
+            <td>₹${(order.price || 0).toFixed(0)}</td>
+            <td>₹${itemTotal.toFixed(0)}</td>
+          </tr>
+        `;
+      }
+      
+      document.getElementById('invoice-items').innerHTML = itemsHtml;
+      
+      // Summary
+      const shippingCost = subtotal > 1500 ? 0 : 80;
+      const total = subtotal + shippingCost;
+      
+      document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(0)}`;
+      document.getElementById('shipping-cost').textContent = shippingCost === 0 ? 'FREE' : `₹${shippingCost.toFixed(0)}`;
+      document.getElementById('total-amount').textContent = `₹${total.toFixed(0)}`;
+    });
+  </script>
+</body>
+</html>

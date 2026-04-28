@@ -77,9 +77,10 @@
 .order-details-grid {
   padding: 40px 25px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
   align-items: stretch;
+  justify-items: center;
 }
 
 /* ---------- Product Card ---------- */
@@ -90,10 +91,18 @@
   background: var(--white);
   border-radius: 15px;
   box-shadow: var(--shadow-sm);
-  padding: 15px;
-  height: 100%;                     /* equal card height */
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  max-width: 320px;
   box-sizing: border-box;
   border: 2px solid black;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 /* ---------- Product Image Container ---------- */
@@ -201,12 +210,37 @@
   background-color: #f0f0f0;
 }
 
+.invoice-button {
+  width: 100%;
+  border: 1px solid var(--primary-dark);
+  background-color: #fff;
+  color: var(--primary-dark);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+}
+
+.invoice-button:hover {
+  background-color: var(--primary-dark);
+  color: white;
+}
+
 /* ---------- Responsive Styles ---------- */
 @media (max-width: 800px) {
   .order-details-grid {
-    grid-template-columns: 1fr; /* stack cards */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
-    padding-bottom: 8px;
+    padding: 20px 15px;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 100%;
   }
 
   .buy-again-button {
@@ -219,6 +253,10 @@
   }
 
   .track-package-button {
+    width: 100%;
+  }
+
+  .invoice-button {
     width: 100%;
   }
 }
@@ -252,14 +290,21 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   .order-details-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px 10px;
+  }
+
+  .product-card {
+    max-width: 100%;
+    padding: 15px;
   }
 
   .product-image-container {
-    height: 200px; /* smaller container for small screens */
-    margin-bottom: 25px;
+    height: 200px;
+    margin-bottom: 15px;
   }
 
   .product-name {
