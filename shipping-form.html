@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BuyKIT - Shipping Details</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="buykit.css">
+  <link rel="stylesheet" href="responsive.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2a3a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .shipping-container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    .shipping-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .shipping-header h1 {
+      color: var(--primary-dark);
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .shipping-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .form-group label .required {
+      color: #e74c3c;
+      margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: 'Open Sans', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-emerald);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      background: linear-gradient(135deg, var(--accent-emerald) 0%, #27ae60 100%);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+    }
+
+    .btn-secondary {
+      flex: 1;
+      background: transparent;
+      color: var(--primary-dark);
+      border: 2px solid #e0e0e0;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-emerald);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-emerald);
+    }
+
+    /* Error popup style */
+    #error-popup {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background-color: #e74c3c;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 10000;
+    }
+
+    #error-popup.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .shipping-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Error Popup -->
+  <div id="error-popup">Please fill all required fields!</div>
+
+  <div class="shipping-container">
+    <a href="checkout.html" class="back-link">← Back to Checkout</a>
+
+    <div class="shipping-header">
+      <h1>Shipping Details</h1>
+      <p>Please enter your delivery information</p>
+    </div>
+
+    <form id="shipping-form">
+      <!-- Full Name -->
+      <div class="form-group">
+        <label>Full Name <span class="required">*</span></label>
+        <input type="text" name="fullName" placeholder="Enter your full name" required>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="form-group">
+        <label>Mobile Number <span class="required">*</span></label>
+        <input type="tel" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email Address <span class="required">*</span></label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <!-- Street Address -->
+      <div class="form-group">
+        <label>Street Address <span class="required">*</span></label>
+        <textarea name="street" placeholder="House no, Building name, Street, Landmark" required></textarea>
+      </div>
+
+      <!-- City & State -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>City <span class="required">*</span></label>
+          <input type="text" name="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+          <label>State <span class="required">*</span></label>
+          <input type="text" name="state" placeholder="State" required>
+        </div>
+      </div>
+
+      <!-- Pincode -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Pincode <span class="required">*</span></label>
+          <input type="text" name="pincode" placeholder="6-digit pincode" pattern="[0-9]{6}" maxlength="6" required>
+        </div>
+        <div class="form-group">
+          <label>Landmark (Optional)</label>
+          <input type="text" name="landmark" placeholder="Nearby landmark">
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <a href="checkout.html" class="btn-secondary">Cancel</a>
+        <button type="submit" class="btn-primary">Save & Continue</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('shipping-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(this);
+      const shippingDetails = {};
+
+      for (let [key, value] of formData.entries()) {
+        shippingDetails[key] = value;
+      }
+
+      // Validate all required fields
+      const requiredFields = ['fullName', 'mobile', 'email', 'street', 'city', 'state', 'pincode'];
+      const missingFields = requiredFields.filter(field => !shippingDetails[field] || shippingDetails[field].trim() === '');
+
+      if (missingFields.length > 0) {
+        showError('Please fill all required fields!');
+        return;
+      }
+
+      // Validate mobile number (10 digits)
+      if (!/^[0-9]{10}$/.test(shippingDetails.mobile)) {
+        showError('Please enter a valid 10-digit mobile number!');
+        return;
+      }
+
+      // Validate pincode (6 digits)
+      if (!/^[0-9]{6}$/.test(shippingDetails.pincode)) {
+        showError('Please enter a valid 6-digit pincode!');
+        return;
+      }
+
+      // Save to localStorage
+      localStorage.setItem('shippingDetails', JSON.stringify(shippingDetails));
+
+      // Redirect back to checkout
+      window.location.href = 'checkout.html';
+    });
+
+    function showError(message) {
+      const popup = document.getElementById('error-popup');
+      popup.textContent = message;
+      popup.classList.add('show');
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 3000);
+    }
+
+    // Check if we're in "placing order" mode
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromCheckout = urlParams.get('from') === 'checkout';
+    const placingOrder = localStorage.getItem('placingOrder');
+
+    // Clear old shipping details when placing a new order (ask every time)
+    if (fromCheckout && placingOrder === 'true') {
+      localStorage.removeItem('shippingDetails');
+    }
+
+    // Pre-fill form if shipping details exist (for edit mode, not new order)
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedDetails = localStorage.getItem('shippingDetails');
+      if (savedDetails) {
+        const details = JSON.parse(savedDetails);
+        Object.keys(details).forEach(key => {
+          const input = document.querySelector(`[name="${key}"]`);
+          if (input) input.value = details[key];
+        });
+      }
+    });
+  </script>
+</body>
+</html>

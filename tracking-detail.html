@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Shipment - BUYKIT</title>
+  <link rel="stylesheet" href="buykit.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="tracking-detail.css">
+</head>
+<body>
+  <div class="tracking-detail-container">
+    <a href="tracking.html" class="back-link">← Back to Order Tracking</a>
+
+    <div id="tracking-content">
+      <!-- Content will be loaded by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get order from localStorage
+      const order = JSON.parse(localStorage.getItem('activeOrder'));
+
+      if (!order) {
+        document.getElementById('tracking-content').innerHTML = `
+          <div class="tracking-status-icon">❌</div>
+          <h2 class="tracking-status-title">No Order Found</h2>
+          <p class="tracking-status-message">Please go back and select an order to track.</p>
+          <a href="orders.html" class="track-button">View Orders</a>
+        `;
+        return;
+      }
+
+      const hasTracking = order.indiaPostTracking && order.indiaPostTracking.trim() !== '';
+
+      if (hasTracking) {
+        // Show tracking information
+        document.getElementById('tracking-content').innerHTML = `
+          <div class="tracking-status-icon shipped">📦</div>
+          <h2 class="tracking-status-title">Your Order is on the Way!</h2>
+          <p class="tracking-status-message">
+            Great news! Your order has been shipped and is currently in transit.
+          </p>
+
+          <div class="order-info">
+            <p><strong>Order ID:</strong> ${order.id}</p>
+            <p><strong>Status:</strong> ${order.status}</p>
+            <p><strong>Estimated Delivery:</strong> <span class="estimated-time">${new Date(Date.now() + 4 * 86400000).toDateString()}</span></p>
+          </div>
+
+          <div class="tracking-id-box">
+            <h3>🚚 India Post Tracking Number</h3>
+            <div class="tracking-number">${order.indiaPostTracking}</div>
+            <div class="carrier">Shipping Partner: India Post</div>
+          </div>
+
+          <a href="https://www.indiapost.gov.in/" target="_blank" class="track-button">
+            Track on India Post Website
+          </a>
+        `;
+      } else {
+        // Show "not shipped yet" message
+        document.getElementById('tracking-content').innerHTML = `
+          <div class="tracking-status-icon pending">⏳</div>
+          <h2 class="tracking-status-title">Order Processing</h2>
+          <p class="tracking-status-message">
+            Your order is being prepared for shipment. <br>
+            The tracking number will be available once your package is handed over to India Post.
+            This usually takes 24-48 hours after order confirmation.
+          </p>
+
+          <div class="order-info">
+            <p><strong>Order ID:</strong> in process</p>
+            <p><strong>Status:</strong> in process</p>
+            <p><strong>Order Date:</strong> ${order.orderedAt ? new Date(order.orderedAt).toDateString() : new Date().toDateString()}</p>
+          </div>
+
+          <div class="tracking-status-message pending-box">
+            <strong>📢 Please Note:</strong><br>
+            Tracking information will be updated here once available. 
+            Please check back after 24-48 hours or contact support if you need assistance.
+          </div>
+
+          <div class="update-tracking-section" style="display: none;">
+            <h4>🔐 Admin: Update Tracking</h4>
+            <input type="text" id="tracking-input" class="tracking-input" placeholder="Enter India Post Tracking Number">
+            <br>
+            <button class="update-btn" onclick="updateTracking()">Update Tracking</button>
+          </div>
+        `;
+      }
+
+      // Admin access - press Ctrl+Shift+A to show update section
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+          const updateSection = document.querySelector('.update-tracking-section');
+          if (updateSection) {
+            updateSection.style.display = 'block';
+          }
+        }
+      });
+    });
+
+    // Function to update tracking (for admin use)
+    function updateTracking() {
+      const trackingNumber = document.getElementById('tracking-input').value.trim();
+      if (!trackingNumber) {
+        alert('Please enter a tracking number!');
+        return;
+      }
+
+      const order = JSON.parse(localStorage.getItem('activeOrder'));
+      if (order) {
+        order.indiaPostTracking = trackingNumber;
+        order.status = 'In Transit';
+        localStorage.setItem('activeOrder', JSON.stringify(order));
+
+        // Also update in orders list
+        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const orderIndex = orders.findIndex(o => o.id === order.id);
+        if (orderIndex !== -1) {
+          orders[orderIndex].indiaPostTracking = trackingNumber;
+          orders[orderIndex].status = 'In Transit';
+          localStorage.setItem('orders', JSON.stringify(orders));
+        }
+
+        alert('Tracking number updated successfully!');
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>
