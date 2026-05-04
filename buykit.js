@@ -1,5 +1,6 @@
 import { productApi, cartApi, getUser } from './frontend/api/client.js';
 import { showMessage, money, setButtonLoading } from './frontend/utils/ui.js';
+import { products as localProducts } from './data/product.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   let currentFilter = 'All';
@@ -9,6 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const grid = document.querySelector('#jersey-grid');
   const quantityBadges = document.querySelectorAll('.jscartqtty');
+  const fallbackProducts = localProducts.map((product, index) => ({
+    _id: `local-${index}`,
+    name: product.team,
+    image: product.image,
+    price: [899, 849, 799, 899, 949, 899, 999, 799, 749, 899, 849, 799, 999, 749, 699, 999, 899, 849][index] || 799,
+    league: product.league,
+    season: product.season,
+    badge: product.badge,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    isLocalFallback: true
+  }));
 
   async function updateCartQuantityDisplay() {
     try {
@@ -38,10 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grid) return;
     grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><h3>Loading jerseys...</h3></div>';
     try {
-      const params = { page: currentPage, limit };
-      if (currentFilter !== 'All') params.league = currentFilter;
-      if (currentSearch) params.search = currentSearch;
-      const { products, pagination } = await productApi.list(params);
+      const { products, pagination } = await loadProducts();
 
       if (!products.length) {
         grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><h3>No jerseys found</h3></div>';
@@ -76,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </div>
               <div class="product-spacer"></div>
-              <button class="button button-primary jsaddcart" data-product-id="${product._id}">Add to Cart</button>
+              <button class="button button-primary jsaddcart" data-product-id="${product._id}" ${product.isLocalFallback ? 'data-local-fallback="true"' : ''}>Add to Cart</button>
             </div>`;
         })
         .join('') + renderPagination(pagination);
@@ -87,10 +96,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  async function loadProducts() {
+    const params = { page: currentPage, limit };
+    if (currentFilter !== 'All') params.league = currentFilter;
+    if (currentSearch) params.search = currentSearch;
+
+    try {
+      return await productApi.list(params);
+    } catch (error) {
+      console.warn('Product API unavailable, using local fallback products:', error.message);
+      const filteredProducts = fallbackProducts.filter((product) => {
+        const matchesCategory = currentFilter === 'All' || product.league === currentFilter;
+        const search = currentSearch.toLowerCase();
+        const matchesSearch = !search || product.name.toLowerCase().includes(search) || product.league.toLowerCase().includes(search);
+        return matchesCategory && matchesSearch;
+      });
+      const start = (currentPage - 1) * limit;
+      const products = filteredProducts.slice(start, start + limit);
+      return {
+        products,
+        pagination: {
+          page: currentPage,
+          limit,
+          total: filteredProducts.length,
+          pages: Math.ceil(filteredProducts.length / limit) || 1
+        }
+      };
+    }
+  }
+
   function attachProductActions() {
     document.querySelectorAll('.jsaddcart').forEach((button) => {
       button.addEventListener('click', async () => {
         const user = getUser();
+        if (button.dataset.localFallback === 'true') {
+          showMessage('Backend products are unavailable. Start the server and seed MongoDB to enable cart.', 'error');
+          return;
+        }
         if (!user) {
           window.location.href = 'auth.html?next=index.html';
           return;

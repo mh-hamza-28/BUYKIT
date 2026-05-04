@@ -1,6 +1,6 @@
 # BuyKIT - Full-Stack eCommerce Football Jersey Store
 
-BuyKIT is a full-stack eCommerce web application for selling premium football jerseys. It started as a responsive HTML, CSS, and vanilla JavaScript storefront, then evolved into a production-style commerce system with authentication, product APIs, persistent carts, orders, Stripe payment integration, admin APIs, validation, security middleware, pagination, and caching.
+BuyKIT is a full-stack eCommerce web application for selling premium football jerseys. It started as a responsive HTML, CSS, and vanilla JavaScript storefront, then evolved into a production-style commerce system with authentication, product APIs, persistent carts, orders, admin APIs, validation, security middleware, pagination, and caching.
 
 > Current live frontend demo: https://mh-hamza-28.github.io/BUYKIT/
 
@@ -41,7 +41,6 @@ BuyKIT is a full-stack eCommerce web application for selling premium football je
 - Mongoose
 - JSON Web Tokens
 - bcryptjs
-- Stripe Node SDK
 - dotenv
 - Helmet
 - CORS
@@ -61,7 +60,6 @@ BuyKIT is a full-stack eCommerce web application for selling premium football je
 - Server-side validation and sanitization
 - Pagination and query filtering
 - Basic server-side caching
-- Payment intent workflow
 - Environment-based configuration
 - Modular frontend API client
 
@@ -203,12 +201,6 @@ GET   /api/orders/:id
 PATCH /api/orders/:id/cancel
 ```
 
-### Payments
-
-```http
-POST /api/payments/checkout-intent
-POST /api/payments/webhook
-```
 
 ### Admin
 
@@ -243,8 +235,6 @@ ACCESS_TOKEN_EXPIRY=1d
 FRONTEND_ORIGIN=http://localhost:5000
 CORS_ORIGIN=http://localhost:5000
 CURRENCY=inr
-STRIPE_SECRET_KEY=sk_test_replace_me
-STRIPE_WEBHOOK_SECRET=whsec_replace_me
 ADMIN_EMAIL=admin@buykit.com
 ADMIN_PASSWORD=Admin@12345
 ```
@@ -325,7 +315,7 @@ npm run seed
 
 Seeds products and admin user.
 
-## Example Fetch Calls
+
 
 ### Login
 
@@ -406,9 +396,8 @@ await fetch('http://localhost:5000/api/orders', {
 - Server-side price calculation to prevent cart price manipulation.
 - Real `.env` files ignored by Git.
 
-## Stripe Payment Flow
 
-The backend supports Stripe PaymentIntents:
+
 
 1. User adds products to cart.
 2. User enters shipping address.
@@ -416,7 +405,6 @@ The backend supports Stripe PaymentIntents:
 4. Backend creates an order in `pending_payment` status.
 5. Backend creates a Stripe PaymentIntent.
 6. Frontend receives `clientSecret`.
-7. Stripe webhook marks the order as paid after successful payment.
 
 The next production step is connecting Stripe.js on the checkout page to confirm the payment with the returned `clientSecret`.
 
@@ -430,34 +418,6 @@ The next production step is connecting Stripe.js on the checkout page to confirm
 
 For a larger production system, replace the in-memory cache with Redis.
 
-## SaaS and Multi-Tenant Upgrade Ideas
-
-To turn BuyKIT into a scalable SaaS commerce platform:
-
-- Add a `Tenant` or `Store` model.
-- Add `tenantId` to users, products, carts, orders, payments, and admin records.
-- Use subdomains like `store1.buykit.com`.
-- Add tenant-aware middleware.
-- Add seller dashboards.
-- Add per-tenant Stripe Connect accounts.
-- Add plans, subscriptions, and usage limits.
-- Add audit logs for admin actions.
-- Move caching to Redis.
-- Add background workers for emails, invoices, inventory sync, and shipment updates.
-- Add analytics dashboards for revenue, conversion rate, and product performance.
-
-## Deployment Strategy
-
-Recommended deployment:
-
-- Frontend/static files: CDN, Vercel, Netlify, or served by Express.
-- Backend API: Render, Railway, Fly.io, DigitalOcean, AWS ECS, or Azure App Service.
-- Database: MongoDB Atlas.
-- Cache: Redis Cloud or Upstash Redis.
-- Payments: Stripe live keys and production webhook endpoint.
-- Secrets: managed with platform environment variables.
-- Monitoring: Sentry for errors, Logtail/Datadog for logs, UptimeRobot for uptime.
-- Domain: HTTPS with a custom domain and strict CORS origin.
 
 ## Beginner-Friendly Explanation
 
