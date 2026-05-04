@@ -1,4 +1,4 @@
-const API_BASE_URL = localStorage.getItem('buykitApiUrl') || `${window.location.origin}/api`;
+const API_BASE_URL = localStorage.getItem('buykitApiUrl') || 'http://localhost:5000/api';
 const TOKEN_KEY = 'buykitToken';
 const USER_KEY = 'buykitUser';
 
