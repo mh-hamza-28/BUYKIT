@@ -160,6 +160,11 @@ ul {
     font-size: 14px;
     width: 300px;
 }
+
+/* Mobile search section - hidden on desktop */
+.mobile-search-section {
+    display: none;
+}
 .search-button {
     background: var(--accent-emerald);
     border: none;
@@ -1395,9 +1400,12 @@ hr {
     align-items: center;
   }
 
-  /* Hide only the input */
+  /* Show search input on mobile */
   .search-bar {
-    display: none;
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
   }
 
   /* Make search button compact */

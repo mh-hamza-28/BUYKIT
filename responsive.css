@@ -160,11 +160,12 @@
   /* Navbar */
   .navbar {
     padding: 10px 16px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
   
   .logo-text {
-    font-size: 22px;
+    font-size: 20px;
   }
   
   .nav-links {
@@ -175,14 +176,34 @@
     display: flex !important;
   }
   
-  .middle-section {
-    order: 3;
-    width: 100%;
-    margin-top: 10px;
+  /* Search bar - show below navbar on mobile */
+  .middle.section {
+    display: none; /* Hide from navbar, show below */
   }
   
-  .search-bar {
+  /* Add search section below navbar */
+  .mobile-search-section {
+    display: flex !important;
+    padding: 10px 16px;
+    background: var(--primary-dark);
+    gap: 8px;
+  }
+  
+  .mobile-search-section .search-bar {
+    flex: 1;
     width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+  }
+  
+  .mobile-search-section .search-button {
+    padding: 8px 12px;
+    background: var(--accent-emerald);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
   }
   
   /* Hero */
@@ -333,6 +354,23 @@
     height: calc(100vh - 70px);
   }
   
+  /* Mobile search section */
+  .mobile-search-section {
+    display: flex;
+    padding: 10px 16px;
+    background: var(--primary-dark);
+    gap: 8px;
+  }
+  
+  .mobile-search-section .search-bar {
+    flex: 1;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+  }
+  
   /* Form elements */
   .form-row {
     grid-template-columns: 1fr;
@@ -361,6 +399,20 @@
 
 /* ---------- MOBILE (480px - 575px) ---------- */
 @media (max-width: 575px) and (min-width: 480px) {
+  /* Mobile search section */
+  .mobile-search-section {
+    display: flex;
+    padding: 8px 12px;
+    background: var(--primary-dark);
+    gap: 6px;
+  }
+  
+  .mobile-search-section .search-bar {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
   /* Hero */
   .hero-content h1 {
     font-size: 32px;
@@ -414,6 +466,30 @@
 
 /* ---------- SMALL MOBILE (below 480px) ---------- */
 @media (max-width: 479px) {
+  /* Mobile search section */
+  .mobile-search-section {
+    display: flex;
+    padding: 6px 10px;
+    background: var(--primary-dark);
+    gap: 5px;
+  }
+  
+  .mobile-search-section .search-bar {
+    flex: 1;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+  
+  .mobile-search-section .search-button {
+    padding: 6px 8px;
+  }
+  
+  .mobile-search-section .search-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
   /* Hero */
   .hero-content h1 {
     font-size: 26px;

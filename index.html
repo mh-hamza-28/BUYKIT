@@ -32,6 +32,7 @@
             <li><a href="#features">Features</a></li>
             <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="auth.html">Login</a></li>
 
 
 </ul>          
@@ -54,6 +55,14 @@
     <li><a href="#features">Features</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+</div>
+
+<!-- Mobile Search Section -->
+<div class="mobile-search-section">
+  <input class="search-bar" type="text" placeholder="Search jerseys...">
+  <button class="search-button">
+    <img class="search-icon" src="images/icons/search-icon.png" alt="Search">
+  </button>
 </div>
 
 <main>
@@ -207,21 +216,21 @@
                     <div class="info-icon">📍</div>
                     <div>
                         <h4>Address</h4>
-                        <p>Football Street, Sports City</p>
+                        <p>XYZ</p>
                     </div>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">📧</div>
                     <div>
                         <h4>Email</h4>
-                        <p>support@buykit.com</p>
+                        <p>hamzamohammad0028@gmail.com</p>
                     </div>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">📞</div>
                     <div>
                         <h4>Phone</h4>
-                        <p>+1 (555) 123-4567</p>
+                        <p>+91 7376548370</p>
                     </div>
                 </div>
                 <div class="social-links">
@@ -234,11 +243,11 @@
 
             <form class="contact-form">
                 <div class="form-row">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
-                <input type="text" placeholder="Subject">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <input type="text" name="subject" placeholder="Subject">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                 <button type="submit" class="button button-primary">Send Message</button>
             </form>
         </div>
@@ -311,8 +320,7 @@
     <button class="popup-close js-popup-close"></button>
   </div>
 </div>
-<script  src="buykit-cart.js"></script>
 <script type="module" src="buykit.js"></script>
-<script src="checkout.js"></script>
+<script type="module" src="frontend/js/contact.js"></script>
 </body>
 </html>
