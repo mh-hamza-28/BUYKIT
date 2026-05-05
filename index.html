@@ -1,60 +1,115 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>BuyKIT - Premium Football Jersey Store</title>
+
     <meta name="description" content="Shop authentic football jerseys from top clubs worldwide. Premium quality, fast shipping.">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="buykit.css">
+
   <link rel="stylesheet" href="responsive.css">
+
 </head>
+
 <body>
 
+
+
     <!-- Navigation Bar -->
+
     <nav class="navbar">
+
         <div class="logo">
+
             <span class="logo-icon">⚽︎</span> 
+
             <span class="logo-text">Buy<span class="logo-highlight">KIT</span></span>
+
         </div>
 
+
+
     <div class="middle section">
+
         <input class="search-bar" type="text" placeholder="Search">
 
+
+
         <button class="search-button">
+
           <img class="search-icon" src="images/icons/search-icon.png">
+
         </button>
+
     </div>
 
+
+
         <ul class="nav-links">
+
             <li><a href="#home">Home</a></li>
+
             <li><a href="#jerseys">Jerseys</a></li>
+
             <li><a href="#features">Features</a></li>
+
             <li><a href="#testimonials">Reviews</a></li>
+
             <li><a href="#contact">Contact</a></li>
-            <li><a href="auth.html">Login</a></li>
+
+
+
 
 
 </ul>          
+
 <ul class="nav-cart">
+
         <a href="checkout.html">
+
             <img src="images/icons/cart-icon.png" alt="My cart" class="nav-cart-icon"><p class="cart-quantity jscartqtty">0</p>
+
              MY CART
+
         </a>
+
     </ul>
+
       <div class="mobile-menu-btn" id="mobileMenuBtn">
+
         <span></span>
+
         <span></span>
+
         <span></span>
+
       </div>
+
     </nav>
+
     <div class="mobile-menu-container" id="mobileMenu">
+
   <ul class="mobile-nav-links">
+
     <li><a href="#home">Home</a></li>
+
     <li><a href="#jerseys">Jerseys</a></li>
+
     <li><a href="#features">Features</a></li>
+
     <li><a href="#contact">Contact</a></li>
+
   </ul>
+
 </div>
 
 <!-- Mobile Search Section -->
@@ -66,261 +121,521 @@
 </div>
 
 <main>
+
     <!-- Hero Section -->
+
     <section id="home" class="hero">
+
         <div class="hero-overlay"></div>
+
         <div class="hero-content">
+
             <h1>Wear Your <span class="text-gradient">Passion</span></h1>
+
             <p>Premium authentic jerseys from the world's greatest football clubs</p>
+
             <div class="hero-buttons">
+
                 <a href="#jerseys" class="button button-primary">Shop Collection</a>
+
                 <a href="#features" class="button button-outline">Learn More</a>
+
             </div>
+
             <div class="hero-stats">
+
                 <div class="stat">
+
                     <span class="stat-number">50K+</span>
+
                     <span class="stat-label">Happy Fans</span>
+
                 </div>
+
                 <div class="stat">
+
                     <span class="stat-number">200+</span>
+
                     <span class="stat-label">Club Jerseys</span>
+
                 </div>
+
                 <div class="stat">
+
                     <span class="stat-number">100%</span>
+
                     <span class="stat-label">Authentic</span>
+
                 </div>
+
             </div>
+
         </div>
+
         <div class="scroll-indicator">
+
             <span>Scroll Down</span>
+
             <div class="scroll-arrow"></div>
+
         </div>
+
     </section>
+
+
 
     <!-- Featured Jerseys Section -->
+
     <section id="jerseys" class="jerseys">
+
         <div class="section-header">
+
             <h2><u>Featured Jerseys</u></h2>
+
             <p>Discover the latest kits from top European clubs</p>
+
         </div>
+
+
 
         <!-- Category Tabs -->
+
         <div class="category-tabs">
+
             <button class="tab-btn active" data-category="All">All</button>
+
             <button class="tab-btn" data-category="LA LIGA"><img src="category/laliga.png"><p>LA LIGA</p></button>
+
             <button class="tab-btn" data-category="PREMIER LEAGUE"><img src="category/pl.png"><p>PREMIER LEAGUE</p></button>
+
             <button class="tab-btn" data-category="SERIE A"><img src="category/seriea.png"><p>SERIE A</p></button>
+
             <button class="tab-btn" data-category="BUNDESLIGA"><img src="category/bundesliga.png"><p>BUNDESLIGA</p></button>
+
              <button class="tab-btn" data-category="MLS"><img src="category/MLS.png"><p>MLS</p></button>
+
               <button class="tab-btn" data-category="SAUDI PRO LEAGUE"><img src="category/SPL.png"><p>SAUDI PRO LEAGUE</p></button>
+
         </div>
+
         <hr class="hr">
+
         <div class="main">
+
             <div class="jersey-grid" id="jersey-grid">
+
                 <!-- Products are injected here by JavaScript -->
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <!-- Features Section -->
+
     <section id="features" class="features">
+
         <div class="section-header light">
+
             <span class="section-badge">Why Choose Us ?</span>
+
             <h2>The BuyKIT Difference</h2>
+
             <p>We're not just a store, we're football fans serving football fans</p>
+
         </div>
+
+
 
         <div class="features-grid">
+
             <div class="feature-card">
+
                 <div class="feature-icon">✓</div>
+
                 <h3>100% Authentic</h3>
+
                 <p>Every jersey is sourced directly from official club manufacturers</p>
+
             </div>
+
             <div class="feature-card">
+
                 <div class="feature-icon">🚀</div>
+
                 <h3>Fast Shipping</h3>
+
                 <p>Free worldwide delivery within 5-7 business days</p>
+
             </div>
+
             <div class="feature-card">
+
                 <div class="feature-icon">🔄</div>
+
                 <h3>Easy Returns</h3>
+
                 <p>30-day hassle-free return policy, no questions asked</p>
+
             </div>
+
             <div class="feature-card">
+
                 <div class="feature-icon">💳</div>
+
                 <h3>Secure Payment</h3>
+
                 <p>All transactions encrypted with industry-leading security</p>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <!-- Testimonials Section -->
+
     <section id="testimonials" class="testimonials">
+
         <div class="section-header">
+
             <span class="section-badge">Testimonials</span>
+
             <h2>What Fans Say</h2>
+
             <p>Join thousands of happy customers worldwide</p>
+
         </div>
+
+
 
         <div class="testimonials-grid">
+
             <div class="testimonial-card">
+
                 <div class="testimonial-stars">★★★★★</div>
+
                 <p class="testimonial-text">"The quality is amazing! My Real Madrid jersey looks exactly like the one players wear. Will definitely buy again!"</p>
+
                 <div class="testimonial-author">
+
                     <div class="author-avatar">JD</div>
+
                     <div class="author-info">
+
                         <strong>James Davis</strong>
+
                         <span>Madrid, Spain</span>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <div class="testimonial-card">
+
                 <div class="testimonial-stars">★★★★★</div>
+
                 <p class="testimonial-text">"Super fast delivery and the jersey fits perfectly. The customer service team was very helpful with sizing!"</p>
+
                 <div class="testimonial-author">
+
                     <div class="author-avatar">SK</div>
+
                     <div class="author-info">
+
                         <strong>Sarah Kim</strong>
+
                         <span>London, UK</span>
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <div class="testimonial-card">
+
                 <div class="testimonial-stars">★★★★★</div>
+
                 <p class="testimonial-text">"Best football jersey store online! Great prices and authentic products. My entire family shops here now."</p>
+
                 <div class="testimonial-author">
+
                     <div class="author-avatar">MR</div>
+
                     <div class="author-info">
+
                         <strong>Marco Rossi</strong>
+
                         <span>Milan, Italy</span>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
+
+
 
 
     <!-- Contact Section -->
+
     <section id="contact" class="contact">
+
         <div class="section-header">
+
             <span class="section-badge">Get in Touch</span>
+
             <h2>Contact Us</h2>
+
             <p>Have questions? We'd love to hear from you!</p>
+
         </div>
+
+
 
         <div class="contact-container">
+
             <div class="contact-info">
+
                 <div class="info-item">
+
                     <div class="info-icon">📍</div>
+
                     <div>
+
                         <h4>Address</h4>
-                        <p>XYZ</p>
+
+                        <p>Football Street, Sports City</p>
+
                     </div>
+
                 </div>
+
                 <div class="info-item">
+
                     <div class="info-icon">📧</div>
+
                     <div>
+
                         <h4>Email</h4>
-                        <p>hamzamohammad0028@gmail.com</p>
+
+                        <p>support@buykit.com</p>
+
                     </div>
+
                 </div>
+
                 <div class="info-item">
+
                     <div class="info-icon">📞</div>
+
                     <div>
+
                         <h4>Phone</h4>
-                        <p>+91 7376548370</p>
+
+                        <p>+1 (555) 123-4567</p>
+
                     </div>
+
                 </div>
+
                 <div class="social-links">
+
                     <a href="#" class="social-btn">FB</a>
+
                     <a href="#" class="social-btn">TW</a>
+
                     <a href="#" class="social-btn">IG</a>
+
                     <a href="#" class="social-btn">YT</a>
+
                 </div>
+
             </div>
+
+
 
             <form class="contact-form">
+
                 <div class="form-row">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
+
+                    <input type="text" placeholder="Your Name" required>
+
+                    <input type="email" placeholder="Your Email" required>
+
                 </div>
-                <input type="text" name="subject" placeholder="Subject">
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+                <input type="text" placeholder="Subject">
+
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+
                 <button type="submit" class="button button-primary">Send Message</button>
+
             </form>
+
         </div>
+
     </section>
 
+
+
     <!-- Footer -->
+
     <footer class="footer">
+
         <div class="footer-content">
+
             <div class="footer-brand">
+
                 <div class="logo">
+
                     <span class="logo-icon">⚽︎</span>
+
                     <span class="logo-text">Buy<span class="logo-highlight">KIT</span></span>
+
                 </div>
+
                 <p class="pre-tag">Your ultimate destination for authentic football jerseys from the world's greatest clubs.</p>
+
             </div>
+
+
 
             <div class="footer-links">
+
                 <div class="footer-column">
+
                     <h4><u>Shop</u></h4>
+
                     <ul>
+
                         <li><a href="#">All Jerseys</a></li>
+
                         <li><a href="#">New Arrivals</a></li>
+
                         <li><a href="#">Sale</a></li>
+
                         <li><a href="#">Accessories</a></li>
+
                     </ul>
+
                 </div>
+
                 <div class="footer-column">
+
                     <h4><u>Help</u></h4>
+
                     <ul>
+
                         <li><a href="#">Size Guide</a></li>
+
                         <li><a href="#">Shipping</a></li>
+
                         <li><a href="#">Returns</a></li>
+
                         <li><a href="#">FAQ</a></li>
+
                     </ul>
+
                 </div>
+
                 <div class="footer-column">
+
                     <h4><u>Company</u></h4>
+
                     <ul>
+
                         <li><a href="#">About Us</a></li>
+
                         <li><a href="#">Careers</a></li>
+
                         <li><a href="#">Press</a></li>
+
                         <li><a href="#">Contact</a></li>
+
                     </ul>
+
                 </div>
+
             </div>
+
         </div>
+
+
 
         <div class="footer-bottom">
+
             <p>&copy; 2026 BuyKIT. All rights reserved.</p>
+
             <p>Made with ❤️ for football fans worldwide</p>
+
         </div>
+
     </footer>
+
     <!-- Back to Top Button -->
+
    <a href="orders.html" class="cart orders-icon">
+
     <span style="font-size: 24px;">📦</span><span class="text"><b>MY ORDERS</b></span>
+
 </a>
 
+
+
 <a href="#home" class="back-to-top">↑</a>
+
 </main>
 
+
+
 <!-- Add to Cart Popup -->
+
 <div id="cart-popup" class="cart-popup">Jersey added to cart!
+
 </div>
 
+
+
   <div class="cart-popup-content">
+
     <img class="js-popup-image" src="" alt="">
+
     <div class="popup-text">
+
       <h4 class="js-popup-title"></h4>
+
     </div>
+
     <button class="popup-close js-popup-close"></button>
+
   </div>
+
 </div>
-<script type="module" src="buykit.js"></script>
-<script type="module" src="frontend/js/contact.js"></script>
+
+<script  src="buykit-cart.js"></script>
+
+<script src="buykit.js"></script>
+
+<script src="checkout.js"></script>
+
 </body>
+
 </html>

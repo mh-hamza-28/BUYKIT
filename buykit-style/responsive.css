@@ -157,14 +157,23 @@
     overflow-x: hidden;
   }
   
-  /* Navbar */
+  /* Navbar - everything in one line */
   .navbar {
-    padding: 10px 16px;
+    padding: 10px 12px;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    flex-shrink: 0;
   }
   
   .logo-text {
+    font-size: 18px;
+  }
+  
+  .logo-icon {
     font-size: 20px;
   }
   
@@ -172,38 +181,39 @@
     display: none;
   }
   
+  /* Hide search in navbar on mobile */
+  .middle.section {
+    display: none !important;
+  }
+  
+  /* Show only logo, cart, and menu button */
+  .nav-cart {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+  
+  .nav-cart a {
+    font-size: 0;
+  }
+  
+  .nav-cart-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .cart-quantity {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+  
   .mobile-menu-btn {
     display: flex !important;
+    width: 28px;
+    height: 22px;
   }
   
-  /* Search bar - show below navbar on mobile */
-  .middle.section {
-    display: none; /* Hide from navbar, show below */
-  }
-  
-  /* Add search section below navbar */
-  .mobile-search-section {
-    display: flex !important;
-    padding: 10px 16px;
-    background: var(--primary-dark);
-    gap: 8px;
-  }
-  
-  .mobile-search-section .search-bar {
-    flex: 1;
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 25px;
-    border: none;
-    font-size: 14px;
-  }
-  
-  .mobile-search-section .search-button {
-    padding: 8px 12px;
-    background: var(--accent-emerald);
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+  .mobile-menu-btn span {
+    height: 3px;
   }
   
   /* Hero */
@@ -354,23 +364,6 @@
     height: calc(100vh - 70px);
   }
   
-  /* Mobile search section */
-  .mobile-search-section {
-    display: flex;
-    padding: 10px 16px;
-    background: var(--primary-dark);
-    gap: 8px;
-  }
-  
-  .mobile-search-section .search-bar {
-    flex: 1;
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 25px;
-    border: none;
-    font-size: 14px;
-  }
-  
   /* Form elements */
   .form-row {
     grid-template-columns: 1fr;
@@ -399,18 +392,32 @@
 
 /* ---------- MOBILE (480px - 575px) ---------- */
 @media (max-width: 575px) and (min-width: 480px) {
-  /* Mobile search section */
-  .mobile-search-section {
-    display: flex;
+  /* Navbar - everything in one line */
+  .navbar {
     padding: 8px 12px;
-    background: var(--primary-dark);
-    gap: 6px;
+    flex-wrap: nowrap;
   }
   
-  .mobile-search-section .search-bar {
-    flex: 1;
-    padding: 8px 12px;
-    font-size: 13px;
+  .logo-text {
+    font-size: 16px;
+  }
+  
+  .middle.section {
+    display: none !important;
+  }
+  
+  .nav-cart {
+    margin-left: auto;
+    margin-right: 8px;
+  }
+  
+  .nav-cart a {
+    font-size: 0;
+  }
+  
+  .nav-cart-icon {
+    width: 26px;
+    height: 26px;
   }
   
   /* Hero */
@@ -466,28 +473,48 @@
 
 /* ---------- SMALL MOBILE (below 480px) ---------- */
 @media (max-width: 479px) {
-  /* Mobile search section */
-  .mobile-search-section {
-    display: flex;
+  /* Navbar - compact single line */
+  .navbar {
     padding: 6px 10px;
-    background: var(--primary-dark);
-    gap: 5px;
+    flex-wrap: nowrap;
   }
   
-  .mobile-search-section .search-bar {
-    flex: 1;
-    padding: 6px 10px;
-    font-size: 12px;
-    border-radius: 20px;
+  .logo-text {
+    font-size: 14px;
   }
   
-  .mobile-search-section .search-button {
-    padding: 6px 8px;
+  .logo-icon {
+    font-size: 18px;
   }
   
-  .mobile-search-section .search-icon {
-    width: 18px;
-    height: 18px;
+  .middle.section {
+    display: none !important;
+  }
+  
+  .nav-cart {
+    margin-left: auto;
+    margin-right: 8px;
+  }
+  
+  .nav-cart a {
+    font-size: 0;
+  }
+  
+  .nav-cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .cart-quantity {
+    font-size: 9px;
+    padding: 1px 4px;
+    top: -3px;
+    right: -3px;
+  }
+  
+  .mobile-menu-btn {
+    width: 24px;
+    height: 20px;
   }
   
   /* Hero */
